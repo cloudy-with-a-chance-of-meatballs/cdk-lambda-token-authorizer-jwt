@@ -9,6 +9,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: 'cdk-lambda-token-authorizer-jwt',
   repositoryUrl: 'https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.git',
   stability: 'experimental',
+  license: 'MIT',
+  keywords: ['aws', 'cdk', 'lambda', 'apigateway', 'rest', 'api', 'jwt', 'tokenauthorizer', 'jwks'],
   peerDependency: [
     'aws-cdk-lib',
     'constructs',
