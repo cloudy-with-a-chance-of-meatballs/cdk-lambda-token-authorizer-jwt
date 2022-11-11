@@ -15,7 +15,15 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'aws-cdk-lib',
     'constructs',
   ],
+  autoApproveUpgrades: true,
+  autoApproveOptions: {
+    allowedUsernames: ["dependabot[bot]"],
+    secret: "PROJEN_GITHUB_TOKEN",
+  },
   dependabot: true,
+  dependabotOptions: {
+    labels: ["auto-approve"],
+  },
   codeCov: true,
 });
 
