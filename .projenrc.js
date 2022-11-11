@@ -17,12 +17,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
   ],
   autoApproveUpgrades: true,
   autoApproveOptions: {
-    allowedUsernames: ["dependabot[bot]"],
-    secret: "PROJEN_GITHUB_TOKEN",
+    allowedUsernames: ['dependabot[bot]'],
+    secret: 'PROJEN_GITHUB_TOKEN',
   },
   dependabot: true,
   dependabotOptions: {
-    labels: ["auto-approve"],
+    labels: ['auto-approve'],
   },
   codeCov: true,
 });
