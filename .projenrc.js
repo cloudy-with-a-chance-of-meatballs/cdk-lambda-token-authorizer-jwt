@@ -14,7 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   peerDependency: [
     'aws-cdk-lib',
     'constructs',
-  ]
+  ],
 });
 
 project.setScript('cdk', 'cdk');
