@@ -14,12 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   peerDependency: [
     'aws-cdk-lib',
     'constructs',
-  ],
-  python: {
-    distName: 'cdk-lambda-token-authorizer-jwt',
-    module: 'cdk_lambda_token_authorizer_jwt',
-  },
-  dependabot: true
+  ]
 });
 
 project.setScript('cdk', 'cdk');
