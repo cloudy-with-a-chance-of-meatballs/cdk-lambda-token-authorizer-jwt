@@ -16,6 +16,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'constructs',
   ],
   dependabot: true,
+  codeCov: true,
 });
 
 project.setScript('cdk', 'cdk');
