@@ -63,10 +63,18 @@
     "constructs": "^10.0.5"
   },
   "keywords": [
-    "cdk"
+    "api",
+    "apigateway",
+    "aws",
+    "cdk",
+    "jwks",
+    "jwt",
+    "lambda",
+    "rest",
+    "tokenauthorizer"
   ],
   "main": "lib/index.js",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "version": "0.0.0",
   "jest": {
     "testMatch": [
