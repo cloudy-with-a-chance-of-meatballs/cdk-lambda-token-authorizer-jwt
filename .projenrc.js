@@ -15,6 +15,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'aws-cdk-lib',
     'constructs',
   ],
+  python: {
+    distName: 'cdk-lambda-token-authorizer-jwt',
+    module: 'cdk_lambda_token_authorizer_jwt',
+  },
 });
 
 project.setScript('cdk', 'cdk');
