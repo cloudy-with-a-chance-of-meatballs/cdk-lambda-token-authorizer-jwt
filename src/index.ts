@@ -1,0 +1,18 @@
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import { Construct } from 'constructs';
+
+export interface TokenAuthorizerJwtFunctionProps extends lambda.FunctionOptions {
+  readonly tracingOption?: lambda.Tracing;
+}
+
+export class TokenAuthorizerJwtFunction extends lambda.Function {
+  public constructor(scope: Construct, id: string, props: lambda.FunctionOptions) {
+
+    super(scope, id, {
+      handler: 'index.lambdaHandler',
+      code: lambda.Code.fromAsset('function'),
+      runtime: lambda.Runtime.NODEJS_14_X,
+      ...props,
+    });
+  }
+}
