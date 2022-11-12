@@ -46,7 +46,15 @@ export class HelloworldStack extends cdk.Stack {
     const api = new apigateway.RestApi(this, 'ApiName', {});
     
     //### EXAMPLE: init the function
-    const tokenAuthFunction = new TokenAuthorizerJwtFunction(this, 'lambdaFunctionName', {});
+    const tokenAuthFunction = new TokenAuthorizerJwtFunction(this, 'lambdaFunctionName', {
+      environment: { 
+        // PROVIDE VARIABLES
+        TOKEN_AUTHORIZER_JWKS_URI: 'https://example.auth0.com/.well-known/jwks.json',
+        TOKEN_AUTHORIZER_JWKS_KID: 'SOME_KID_FROM_JWKS_RESPONSE',
+        // OR
+        TOKEN_AUTHORIZER_JWT_VERIFICATION_SECRET: 'A_PUBLIC_KEY_OR_SYMETRIC_SECRET'
+      }
+    });
     //### END
     
     const tokenAuthorizer = new apigateway.TokenAuthorizer(this, 'tokenAuthorizerName', { 
