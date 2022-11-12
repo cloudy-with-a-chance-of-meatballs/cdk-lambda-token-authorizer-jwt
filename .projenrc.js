@@ -37,7 +37,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     mavenEndpoint: 'https://s01.oss.sonatype.org',
     mavenGroupId: 'io.github.cloudy-with-a-chance-of-meatballs',
     mavenArtifactId: 'cdk-lambda-token-authorizer-jwt',
-    javaPackage: 'io.github.cloudy-with-a-chance-of-meatballs.cdk.lambda_token_authorizer_jwt',
+    javaPackage: 'io.github.cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt',
   },
 });
 
