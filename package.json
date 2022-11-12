@@ -122,7 +122,11 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "maven": {}
+        "package": "io.github.cloudy-with-a-chance-of-meatballs.cdk.lambda_token_authorizer_jwt",
+        "maven": {
+          "groupId": "io.github.cloudy-with-a-chance-of-meatballs",
+          "artifactId": "cdk-lambda-token-authorizer-jwt"
+        }
       },
       "python": {
         "distName": "cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt",
