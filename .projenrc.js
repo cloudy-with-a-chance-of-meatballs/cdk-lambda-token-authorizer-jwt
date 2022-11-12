@@ -26,8 +26,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   codeCov: true,
   publishToPypi: {
-    distName: "cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt",
-    module: "cloudy_with_a_chance_of_meatballs_cdk_lambda_token_authorizer_jwt",
+    distName: 'cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt',
+    module: 'cloudy_with_a_chance_of_meatballs_cdk_lambda_token_authorizer_jwt',
   },
 });
 
