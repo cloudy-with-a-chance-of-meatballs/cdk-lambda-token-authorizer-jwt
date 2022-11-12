@@ -33,7 +33,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     dotNetNamespace: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
     packageId: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
   },
-  java: {
+  publishToMaven: {
     javaPackage: 'com.CloudyWithAchanceOfMeatballs.Cdk',
     mavenArtifactId: 'cdk-lambda-token-authorizer-jwt',
     mavenGroupId: 'com.CloudyWithAchanceOfMeatballs.Cdk',
