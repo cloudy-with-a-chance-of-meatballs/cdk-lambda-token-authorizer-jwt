@@ -18,6 +18,7 @@
     "package-all": "npx projen package-all",
     "package:dotnet": "npx projen package:dotnet",
     "package:java": "npx projen package:java",
+    "package:go": "npx projen package:go",
     "package:js": "npx projen package:js",
     "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
@@ -135,6 +136,9 @@
       "dotnet": {
         "namespace": "CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt",
         "packageId": "CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt"
+      },
+      "go": {
+        "moduleName": "github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt"
       }
     },
     "tsc": {
