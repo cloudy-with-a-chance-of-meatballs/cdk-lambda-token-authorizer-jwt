@@ -33,6 +33,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     dotNetNamespace: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
     packageId: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
   },
+  publishToMaven: {
+    mavenEndpoint: 'https://s01.oss.sonatype.org'
+  },
 });
 
 project.setScript('cdk', 'cdk');
