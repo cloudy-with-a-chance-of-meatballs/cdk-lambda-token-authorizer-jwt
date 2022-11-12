@@ -3,7 +3,7 @@ import jwks from 'jwks-rsa';
 import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 import Ajv, { JTDDataType } from "ajv/dist/jtd"
 
-const ajv = new Ajv({ allErrors: true, strictTypes: true, strictTuples: true, strictRequired: true });
+const ajv = new Ajv({ strictTypes: true, strictTuples: true, strictRequired: true });
 
 const POLICY_DOCUMENT_VERSION:            string = '2012-10-17';
 const POLICY_DOCUMENT_STATEMENT_ACTION:   string = 'execute-api:Invoke';
