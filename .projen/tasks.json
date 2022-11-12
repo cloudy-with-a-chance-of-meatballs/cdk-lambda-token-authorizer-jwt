@@ -178,6 +178,15 @@
         }
       ]
     },
+    "package:java": {
+      "name": "package:java",
+      "description": "Create java language bindings",
+      "steps": [
+        {
+          "exec": "jsii-pacmak -v --target java"
+        }
+      ]
+    },
     "package:js": {
       "name": "package:js",
       "description": "Create js language bindings",
