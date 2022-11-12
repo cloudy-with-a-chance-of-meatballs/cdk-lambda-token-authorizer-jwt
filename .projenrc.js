@@ -31,7 +31,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   dotnet: {
     dotNetNamespace: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
-    packageId: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt'
+    packageId: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
   },
 });
 
