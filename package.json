@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@types/jest": "^27",
-    "@types/node": "^16",
+    "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "aws-cdk-lib": "2.5.0",
@@ -71,7 +71,7 @@
     "tokenauthorizer"
   ],
   "engines": {
-    "node": ">= 16.18.1"
+    "node": ">= 18.12.1"
   },
   "main": "lib/index.js",
   "license": "MIT",
