@@ -223,7 +223,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --all --testMatch **/*.test.ts --coverageProvider=v8 --updateSnapshot"
+          "exec": "jest --passWithNoTests --all --testMatch \"**/*.test.ts\" --coverageProvider=v8 --updateSnapshot"
         },
         {
           "spawn": "eslint"

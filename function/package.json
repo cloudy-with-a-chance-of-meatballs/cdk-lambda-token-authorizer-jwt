@@ -11,7 +11,7 @@
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
-    "test": "jest --all --coverageProvider=v8 --updateSnapshot --testMatch **/*.test.ts",
+    "test": "npx projen test",
     "test:watch": "npx projen test:watch",
     "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
