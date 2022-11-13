@@ -71,7 +71,7 @@
     "tokenauthorizer"
   ],
   "engines": {
-    "node": ">= 16.13.0"
+    "node": ">= 16.18.1"
   },
   "main": "lib/index.js",
   "license": "MIT",

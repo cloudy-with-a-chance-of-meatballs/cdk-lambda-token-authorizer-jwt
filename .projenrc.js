@@ -25,7 +25,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     labels: ['auto-approve'],
   },
   codeCov: true,
-  minNodeVersion: '16.13.0',
+  minNodeVersion: '16.18.1',
 });
 
 project.setScript('cdk', 'cdk');
