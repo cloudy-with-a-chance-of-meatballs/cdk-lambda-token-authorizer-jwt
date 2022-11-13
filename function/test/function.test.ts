@@ -1,4 +1,4 @@
-import { lambdaHandler } from '../function';
+import { lambdaHandler } from '../src';
 
 const asymetricSecret = 'secVal42';
 const jwksUri = 'https://example.auth0.com/.well-known/jwks.json';

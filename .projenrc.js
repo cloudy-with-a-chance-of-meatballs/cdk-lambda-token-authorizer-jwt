@@ -37,6 +37,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     dotNetNamespace: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
     packageId: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
   },
+  jestOptions: {
+    extraCliOptions: ['--testMatch "**/*.test.ts"'],
+  },
 });
 
 project.setScript('cdk', 'cdk');
