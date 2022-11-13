@@ -16,9 +16,7 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
-    "package:dotnet": "npx projen package:dotnet",
     "package:js": "npx projen package:js",
-    "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
     "pre-compile": "npx projen pre-compile",
     "release": "npx projen release",
@@ -122,16 +120,7 @@
   "stability": "experimental",
   "jsii": {
     "outdir": "dist",
-    "targets": {
-      "python": {
-        "distName": "cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt",
-        "module": "cloudy_with_a_chance_of_meatballs_cdk_lambda_token_authorizer_jwt"
-      },
-      "dotnet": {
-        "namespace": "CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt",
-        "packageId": "CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt"
-      }
-    },
+    "targets": {},
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
