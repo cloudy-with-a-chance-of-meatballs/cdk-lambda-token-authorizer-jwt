@@ -15,6 +15,16 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'aws-cdk-lib',
     'constructs',
   ],
+  jestOptions: {
+    jestConfig: {
+      testMatch: [
+          "<rootDir>/function/**/__tests__/**/*.ts?(x)",
+          "<rootDir>/function/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+          "<rootDir>/src/**/__tests__/**/*.ts?(x)",
+          "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)"
+      ]
+    }
+  },
   autoApproveUpgrades: true,
   autoApproveOptions: {
     allowedUsernames: ['dependabot[bot]'],
