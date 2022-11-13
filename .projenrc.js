@@ -37,11 +37,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
     dotNetNamespace: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
     packageId: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
   },
+  jestOptions: {
+    extraCliOptions: ['--testMatch "**/*.test.ts"'],
+  },
 });
 
 project.setScript('cdk', 'cdk');
-
-project.setScript('test', 'jest --all --coverageProvider=v8 --updateSnapshot --testMatch **/*.test.ts');
 
 project.synth();
 
