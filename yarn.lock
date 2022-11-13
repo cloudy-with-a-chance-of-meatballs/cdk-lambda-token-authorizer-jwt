@@ -4008,7 +4008,7 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-projen@^0.65.20:
+projen@^0.65.21:
   version "0.65.21"
   resolved "https://registry.yarnpkg.com/projen/-/projen-0.65.21.tgz#dba5455842bcf1eaf045573567e51f6c9dbe891f"
   integrity sha512-IkJCCa7G7x2JP5Ufc+i2edFIk7sMVB75cHDN7DkhuNakyvKm7e5Q6MW8wTLN2aDd8DJSNdO5muKGEyf7SCIDbA==

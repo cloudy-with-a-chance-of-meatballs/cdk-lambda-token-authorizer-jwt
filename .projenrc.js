@@ -26,6 +26,17 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   codeCov: true,
   minNodeVersion: '18.12.1',
+  python: {
+    distName: 'cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt',
+    module: 'cloudy_with_a_chance_of_meatballs_cdk_lambda_token_authorizer_jwt',
+    classifiers: [
+      'Programming Language :: Python :: 3.9',
+    ],
+  },
+  dotnet: {
+    dotNetNamespace: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
+    packageId: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
+  },
 });
 
 project.setScript('cdk', 'cdk');
