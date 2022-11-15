@@ -4,7 +4,7 @@ Add a lambda function to your project which can be used as a apigateway token au
 
 [![GitHub](https://img.shields.io/github/license/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt?style=flat-square)](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/blob/main/LICENSE)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt?sort=semver&style=flat-square)](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/releases)
-[![npm (scoped)](https://img.shields.io/npm/v/cdk-lambda-token-authorizer-jwt?style=flat-square)](https://www.npmjs.com/package/cdk-lambda-token-authorizer-jwt)
+[![npm (scoped)](https://img.shields.io/npm/v/@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt?style=flat-square)](https://www.npmjs.com/package/@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt)
 [![PyPI](https://img.shields.io/pypi/v/cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt?style=flat-square)](https://pypi.org/project/cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt/)
 [![Nuget](https://img.shields.io/nuget/v/CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt?style=flat-square)](https://www.nuget.org/packages/CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt/)
 [![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/release/main?label=release&style=flat-square)](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/actions/workflows/release.yml)
