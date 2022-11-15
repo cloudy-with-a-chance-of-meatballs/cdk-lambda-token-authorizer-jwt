@@ -8,15 +8,19 @@ enum FnEnvVars {
   Schema  = "TOKEN_AUTHORIZER_JWT_VALIDATOR_SCHEMA_JSON"
 };
 
+export interface authorizerOptionsJwks {
+  uri: string;
+  kid: string;
+};
+
+export interface authorizerOptions {
+  tokenPayloadJsonSchema?: string;
+  secret?: string;
+  jwks?: authorizerOptionsJwks
+};
+
 export interface TokenAuthorizerJwtFunctionOptions extends lambda.FunctionOptions {
-  readonly authorizerOptions: {
-    tokenPayloadJsonSchema?: string;
-    secret?: string;
-    jwks?: {
-      uri: string;
-      kid: string;
-    };
-  };
+  authorizerOptions: authorizerOptions
 };
 
 const getFunctionEnvVariablesByOptions = (options: TokenAuthorizerJwtFunctionOptions): any => {
