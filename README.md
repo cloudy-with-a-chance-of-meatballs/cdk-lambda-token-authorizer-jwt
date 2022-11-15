@@ -43,21 +43,39 @@ import { TokenAuthorizerJwtFunction } from "@cloudy-with-a-chance-of-meatballs/c
 export class HelloworldStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props); 
-    
+
     const api = new apigateway.RestApi(this, 'ApiName', {});
-    
+
+    //### EXAMPLE: validation (see avj json schema validation)
+    const tokensSchema = JSON.stringify({
+      properties:{
+        iss: {
+          enum: ["THE_ISSUER_WHICH_NEEDS_TO_MATCH"]
+        },
+        sub: {
+          enum: ["THE_SUB..."]
+        }
+      },
+      additionalProperties: true
+    });
+    //### END: validation
+
     //### EXAMPLE: init the function
     const tokenAuthFunction = new TokenAuthorizerJwtFunction(this, 'lambdaFunctionName', {
       environment: { 
+
         // PROVIDE VARIABLES
         TOKEN_AUTHORIZER_JWKS_URI: 'https://example.auth0.com/.well-known/jwks.json',
         TOKEN_AUTHORIZER_JWKS_KID: 'SOME_KID_FROM_JWKS_RESPONSE',
         // OR
-        TOKEN_AUTHORIZER_JWT_VERIFICATION_SECRET: 'A_PUBLIC_KEY_OR_SYMETRIC_SECRET'
+        TOKEN_AUTHORIZER_JWT_VERIFICATION_SECRET: 'A_PUBLIC_KEY_OR_SYMETRIC_SECRET',
+
+        //TOKEN PAYLOAD VALIDATION
+        TOKEN_AUTHORIZER_JWT_VALIDATOR_SCHEMA_JSON: tokensSchema
       }
     });
     //### END
-    
+
     const tokenAuthorizer = new apigateway.TokenAuthorizer(this, 'tokenAuthorizerName', { 
       //### EXAMPLE: use as handler
       handler: tokenAuthFunction 
