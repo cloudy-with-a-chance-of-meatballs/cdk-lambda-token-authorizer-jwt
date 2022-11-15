@@ -1,7 +1,12 @@
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
-import { FnEnvVars } from '../function/src/const';
+enum FnEnvVars {
+  JwksUri = "TOKEN_AUTHORIZER_JWKS_URI",
+  JwksKid = "TOKEN_AUTHORIZER_JWKS_KID",
+  Secret  = "TOKEN_AUTHORIZER_JWT_VERIFICATION_SECRET",
+  Schema  = "TOKEN_AUTHORIZER_JWT_VALIDATOR_SCHEMA_JSON"
+};
 
 export interface TokenAuthorizerJwtFunctionOptions extends lambda.FunctionOptions {
   readonly authorizerOptions: {
