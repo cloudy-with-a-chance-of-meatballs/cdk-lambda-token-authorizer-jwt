@@ -11,7 +11,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   stability: 'experimental',
   license: 'MIT',
   keywords: ['aws', 'cdk', 'lambda', 'apigateway', 'rest', 'api', 'jwt', 'tokenauthorizer', 'jwks'],
-  cdkDependencies: [
+  deps: [
     'aws-cdk-lib',
     'constructs',
   ],
