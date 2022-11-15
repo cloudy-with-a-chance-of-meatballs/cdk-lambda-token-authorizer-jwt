@@ -20,7 +20,7 @@
   "author": {
     "name": "Christian Fürst",
     "email": "c.fuerst@gmail.com",
-    "organization": false
+    "organization": true
   },
   "devDependencies": {
     "@types/jest": "^29.2.3",

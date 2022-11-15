@@ -1,5 +1,5 @@
 {
-  "name": "cdk-lambda-token-authorizer-jwt",
+  "name": "@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt",
   "repository": {
     "type": "git",
     "url": "https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.git"
