@@ -29,11 +29,11 @@ pip install cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt
 
 ## Usage
 
-- In general the implementation extends `lambda.Function` and the `TokenAuthorizerJwtFunctionOptions` extend `lambda.FunctionOptions` - so you have full flexibillity over the rest of the options beside `handler, code. runtime`.
+- **JWT Token handling**: The token verfification is done via [https://github.com/auth0/node-jsonwebtoken](https://github.com/auth0/node-jsonwebtoken), the jwks fetcher is using [https://github.com/auth0/node-jwks-rsa](https://github.com/auth0/node-jwks-rsa). The implementation per default verifies the token and if given the expiration.
 
-- The token verfification is done via `https://github.com/auth0/node-jsonwebtoken`, the jwks fetcher is using `https://github.com/auth0/node-jwks-rsa`. The implementation per default verifies the token and if given the expiration.
+- **JWT Payload:** Any verification of the token payload must be done over injecting a json schema for validation using [https://ajv.js.org/json-type-definition.html](https://ajv.js.org/json-type-definition.html).
 
-- Any verification of the token payload must be done over injecting a json schema for validation using `https://ajv.js.org/json-type-definition.html`.
+- **Protocols:** [main/API.md#iauthorizeroptions](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/blob/main/API.md#iauthorizeroptions-)
 
 - **Example usage with Rest Apigateway**
 
@@ -71,7 +71,7 @@ new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: {
 }});
 ```
 
-- **Using JWKS (recommended)**
+- **Using JWKS**
 
 ```typescript
 new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: { 
@@ -82,7 +82,7 @@ new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: {
 }});
 ```
 
-- **Using asymmetric algorithms, e.g. public key (recommended)**
+- **Using asymmetric algorithms, e.g. public key**
 
 ```typescript
 const myPublicKeyOneliner = '-----BEGIN PUBLIC KEY---\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKuTfz7kpJHPrmcmgx4Xf4GMoM2kK4mh\nMpSOW3qu1zZA1wfMHV8PS0Kds0nXMB6mmHk/Ke1\Et68aEspQRIn1aLcCAwEAAQ==\n-----END PUBLIC KEY-----';
@@ -92,14 +92,14 @@ new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: {
 }});
 ``` 
 
-- **Using symmetric algorithms, same key for sign and verify (highly discouraged)**
+- **Using symmetric algorithms, same key for sign and verify :warning:**
 
-<small>:warning: the key might be exposed during deploy, in the runtime etc.<small>
+<small>**Attention:** the key might be exposed during deploy, in the runtime etc.<small>
 
 ```typescript
-const myPublicKeyOneliner = 'sharedSecret';
+const mySymmetricSecret = 'sharedSecret';
 
 new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: { 
-  secret: myPublicKeyOneliner
+  secret: mySymmetricSecret
 }});
 ```
