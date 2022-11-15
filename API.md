@@ -9,14 +9,14 @@
 ```typescript
 import { TokenAuthorizerJwtFunction } from 'cdk-lambda-token-authorizer-jwt'
 
-new TokenAuthorizerJwtFunction(scope: Construct, id: string, props: FunctionOptions)
+new TokenAuthorizerJwtFunction(scope: Construct, id: string, props: TokenAuthorizerJwtFunctionOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.props">props</a></code> | <code>aws-cdk-lib.aws_lambda.FunctionOptions</code> | *No description.* |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.props">props</a></code> | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions">TokenAuthorizerJwtFunctionOptions</a></code> | *No description.* |
 
 ---
 
@@ -34,7 +34,7 @@ new TokenAuthorizerJwtFunction(scope: Construct, id: string, props: FunctionOpti
 
 ##### `props`<sup>Required</sup> <a name="props" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.props"></a>
 
-- *Type:* aws-cdk-lib.aws_lambda.FunctionOptions
+- *Type:* <a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions">TokenAuthorizerJwtFunctionOptions</a>
 
 ---
 
@@ -1035,6 +1035,680 @@ The timeout configured for this lambda.
 ---
 
 
+## Structs <a name="Structs" id="Structs"></a>
+
+### TokenAuthorizerJwtFunctionOptions <a name="TokenAuthorizerJwtFunctionOptions" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions"></a>
+
+#### Initializer <a name="Initializer" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.Initializer"></a>
+
+```typescript
+import { TokenAuthorizerJwtFunctionOptions } from 'cdk-lambda-token-authorizer-jwt'
+
+const tokenAuthorizerJwtFunctionOptions: TokenAuthorizerJwtFunctionOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.maxEventAge">maxEventAge</a></code> | <code>aws-cdk-lib.Duration</code> | The maximum age of a request that Lambda sends to a function for processing. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.onFailure">onFailure</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for failed invocations. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.onSuccess">onSuccess</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for successful invocations. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.retryAttempts">retryAttempts</a></code> | <code>number</code> | The maximum number of times to retry when the function returns an error. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.allowAllOutbound">allowAllOutbound</a></code> | <code>boolean</code> | Whether to allow the Lambda to send all network traffic. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.allowPublicSubnet">allowPublicSubnet</a></code> | <code>boolean</code> | Lambda Functions in a public subnet can NOT access the internet. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.architecture">architecture</a></code> | <code>aws-cdk-lib.aws_lambda.Architecture</code> | The system architectures compatible with this lambda function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.codeSigningConfig">codeSigningConfig</a></code> | <code>aws-cdk-lib.aws_lambda.ICodeSigningConfig</code> | Code signing config associated with this function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.currentVersionOptions">currentVersionOptions</a></code> | <code>aws-cdk-lib.aws_lambda.VersionOptions</code> | Options for the `lambda.Version` resource automatically created by the `fn.currentVersion` method. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterQueue">deadLetterQueue</a></code> | <code>aws-cdk-lib.aws_sqs.IQueue</code> | The SQS queue to use if DLQ is enabled. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterQueueEnabled">deadLetterQueueEnabled</a></code> | <code>boolean</code> | Enabled DLQ. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterTopic">deadLetterTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | The SNS topic to use as a DLQ. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.description">description</a></code> | <code>string</code> | A description of the function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.environment">environment</a></code> | <code>{[ key: string ]: string}</code> | Key-value pairs that Lambda caches and makes available for your Lambda functions. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.environmentEncryption">environmentEncryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | The AWS KMS key that's used to encrypt your function's environment variables. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.ephemeralStorageSize">ephemeralStorageSize</a></code> | <code>aws-cdk-lib.Size</code> | The size of the function’s /tmp directory in MiB. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.events">events</a></code> | <code>aws-cdk-lib.aws_lambda.IEventSource[]</code> | Event sources for this function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.filesystem">filesystem</a></code> | <code>aws-cdk-lib.aws_lambda.FileSystem</code> | The filesystem configuration for the lambda function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.functionName">functionName</a></code> | <code>string</code> | A name for the function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.initialPolicy">initialPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Initial policy statements to add to the created Lambda Role. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.insightsVersion">insightsVersion</a></code> | <code>aws-cdk-lib.aws_lambda.LambdaInsightsVersion</code> | Specify the version of CloudWatch Lambda insights to use for monitoring. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.layers">layers</a></code> | <code>aws-cdk-lib.aws_lambda.ILayerVersion[]</code> | A list of layers to add to the function's execution environment. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The number of days log events are kept in CloudWatch Logs. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.memorySize">memorySize</a></code> | <code>number</code> | The amount of memory, in MB, that is allocated to your Lambda function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.profiling">profiling</a></code> | <code>boolean</code> | Enable profiling. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC network to place Lambda network interfaces. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.vpcSubnets">vpcSubnets</a></code> | <code>aws-cdk-lib.aws_ec2.SubnetSelection</code> | Where to place the network interfaces within the VPC. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.authorizerOptions">authorizerOptions</a></code> | <code><a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptions">IAuthorizerOptions</a></code> | *No description.* |
+
+---
+
+##### `maxEventAge`<sup>Optional</sup> <a name="maxEventAge" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.maxEventAge"></a>
+
+```typescript
+public readonly maxEventAge: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+- *Default:* Duration.hours(6)
+
+The maximum age of a request that Lambda sends to a function for processing.
+
+Minimum: 60 seconds
+Maximum: 6 hours
+
+---
+
+##### `onFailure`<sup>Optional</sup> <a name="onFailure" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.onFailure"></a>
+
+```typescript
+public readonly onFailure: IDestination;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IDestination
+- *Default:* no destination
+
+The destination for failed invocations.
+
+---
+
+##### `onSuccess`<sup>Optional</sup> <a name="onSuccess" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.onSuccess"></a>
+
+```typescript
+public readonly onSuccess: IDestination;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IDestination
+- *Default:* no destination
+
+The destination for successful invocations.
+
+---
+
+##### `retryAttempts`<sup>Optional</sup> <a name="retryAttempts" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.retryAttempts"></a>
+
+```typescript
+public readonly retryAttempts: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+The maximum number of times to retry when the function returns an error.
+
+Minimum: 0
+Maximum: 2
+
+---
+
+##### `allowAllOutbound`<sup>Optional</sup> <a name="allowAllOutbound" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.allowAllOutbound"></a>
+
+```typescript
+public readonly allowAllOutbound: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to allow the Lambda to send all network traffic.
+
+If set to false, you must individually add traffic rules to allow the
+Lambda to connect to network targets.
+
+---
+
+##### `allowPublicSubnet`<sup>Optional</sup> <a name="allowPublicSubnet" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.allowPublicSubnet"></a>
+
+```typescript
+public readonly allowPublicSubnet: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Lambda Functions in a public subnet can NOT access the internet.
+
+Use this property to acknowledge this limitation and still place the function in a public subnet.
+
+> [https://stackoverflow.com/questions/52992085/why-cant-an-aws-lambda-function-inside-a-public-subnet-in-a-vpc-connect-to-the/52994841#52994841](https://stackoverflow.com/questions/52992085/why-cant-an-aws-lambda-function-inside-a-public-subnet-in-a-vpc-connect-to-the/52994841#52994841)
+
+---
+
+##### `architecture`<sup>Optional</sup> <a name="architecture" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.architecture"></a>
+
+```typescript
+public readonly architecture: Architecture;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Architecture
+- *Default:* Architecture.X86_64
+
+The system architectures compatible with this lambda function.
+
+---
+
+##### `codeSigningConfig`<sup>Optional</sup> <a name="codeSigningConfig" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.codeSigningConfig"></a>
+
+```typescript
+public readonly codeSigningConfig: ICodeSigningConfig;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.ICodeSigningConfig
+- *Default:* Not Sign the Code
+
+Code signing config associated with this function.
+
+---
+
+##### `currentVersionOptions`<sup>Optional</sup> <a name="currentVersionOptions" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.currentVersionOptions"></a>
+
+```typescript
+public readonly currentVersionOptions: VersionOptions;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.VersionOptions
+- *Default:* default options as described in `VersionOptions`
+
+Options for the `lambda.Version` resource automatically created by the `fn.currentVersion` method.
+
+---
+
+##### `deadLetterQueue`<sup>Optional</sup> <a name="deadLetterQueue" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterQueue"></a>
+
+```typescript
+public readonly deadLetterQueue: IQueue;
+```
+
+- *Type:* aws-cdk-lib.aws_sqs.IQueue
+- *Default:* SQS queue with 14 day retention period if `deadLetterQueueEnabled` is `true`
+
+The SQS queue to use if DLQ is enabled.
+
+If SNS topic is desired, specify `deadLetterTopic` property instead.
+
+---
+
+##### `deadLetterQueueEnabled`<sup>Optional</sup> <a name="deadLetterQueueEnabled" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterQueueEnabled"></a>
+
+```typescript
+public readonly deadLetterQueueEnabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false unless `deadLetterQueue` is set, which implies DLQ is enabled.
+
+Enabled DLQ.
+
+If `deadLetterQueue` is undefined,
+an SQS queue with default options will be defined for your Function.
+
+---
+
+##### `deadLetterTopic`<sup>Optional</sup> <a name="deadLetterTopic" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterTopic"></a>
+
+```typescript
+public readonly deadLetterTopic: ITopic;
+```
+
+- *Type:* aws-cdk-lib.aws_sns.ITopic
+- *Default:* no SNS topic
+
+The SNS topic to use as a DLQ.
+
+Note that if `deadLetterQueueEnabled` is set to `true`, an SQS queue will be created
+rather than an SNS topic. Using an SNS topic as a DLQ requires this property to be set explicitly.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+- *Default:* No description.
+
+A description of the function.
+
+---
+
+##### `environment`<sup>Optional</sup> <a name="environment" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.environment"></a>
+
+```typescript
+public readonly environment: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+- *Default:* No environment variables.
+
+Key-value pairs that Lambda caches and makes available for your Lambda functions.
+
+Use environment variables to apply configuration changes, such
+as test and production environment configurations, without changing your
+Lambda function source code.
+
+---
+
+##### `environmentEncryption`<sup>Optional</sup> <a name="environmentEncryption" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.environmentEncryption"></a>
+
+```typescript
+public readonly environmentEncryption: IKey;
+```
+
+- *Type:* aws-cdk-lib.aws_kms.IKey
+- *Default:* AWS Lambda creates and uses an AWS managed customer master key (CMK).
+
+The AWS KMS key that's used to encrypt your function's environment variables.
+
+---
+
+##### `ephemeralStorageSize`<sup>Optional</sup> <a name="ephemeralStorageSize" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.ephemeralStorageSize"></a>
+
+```typescript
+public readonly ephemeralStorageSize: Size;
+```
+
+- *Type:* aws-cdk-lib.Size
+- *Default:* 512 MiB
+
+The size of the function’s /tmp directory in MiB.
+
+---
+
+##### `events`<sup>Optional</sup> <a name="events" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.events"></a>
+
+```typescript
+public readonly events: IEventSource[];
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.IEventSource[]
+- *Default:* No event sources.
+
+Event sources for this function.
+
+You can also add event sources using `addEventSource`.
+
+---
+
+##### `filesystem`<sup>Optional</sup> <a name="filesystem" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.filesystem"></a>
+
+```typescript
+public readonly filesystem: FileSystem;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.FileSystem
+- *Default:* will not mount any filesystem
+
+The filesystem configuration for the lambda function.
+
+---
+
+##### `functionName`<sup>Optional</sup> <a name="functionName" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.functionName"></a>
+
+```typescript
+public readonly functionName: string;
+```
+
+- *Type:* string
+- *Default:* AWS CloudFormation generates a unique physical ID and uses that ID for the function's name. For more information, see Name Type.
+
+A name for the function.
+
+---
+
+##### `initialPolicy`<sup>Optional</sup> <a name="initialPolicy" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.initialPolicy"></a>
+
+```typescript
+public readonly initialPolicy: PolicyStatement[];
+```
+
+- *Type:* aws-cdk-lib.aws_iam.PolicyStatement[]
+- *Default:* No policy statements are added to the created Lambda role.
+
+Initial policy statements to add to the created Lambda Role.
+
+You can call `addToRolePolicy` to the created lambda to add statements post creation.
+
+---
+
+##### `insightsVersion`<sup>Optional</sup> <a name="insightsVersion" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.insightsVersion"></a>
+
+```typescript
+public readonly insightsVersion: LambdaInsightsVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.LambdaInsightsVersion
+- *Default:* No Lambda Insights
+
+Specify the version of CloudWatch Lambda insights to use for monitoring.
+
+> [https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights-Getting-Started-docker.html](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights-Getting-Started-docker.html)
+
+---
+
+##### `layers`<sup>Optional</sup> <a name="layers" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.layers"></a>
+
+```typescript
+public readonly layers: ILayerVersion[];
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.ILayerVersion[]
+- *Default:* No layers.
+
+A list of layers to add to the function's execution environment.
+
+You can configure your Lambda function to pull in
+additional code during initialization in the form of layers. Layers are packages of libraries or other dependencies
+that can be used by multiple functions.
+
+---
+
+##### `logRetention`<sup>Optional</sup> <a name="logRetention" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetention"></a>
+
+```typescript
+public readonly logRetention: RetentionDays;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.RetentionDays
+- *Default:* logs.RetentionDays.INFINITE
+
+The number of days log events are kept in CloudWatch Logs.
+
+When updating
+this property, unsetting it doesn't remove the log retention policy. To
+remove the retention policy, set the value to `INFINITE`.
+
+---
+
+##### `logRetentionRetryOptions`<sup>Optional</sup> <a name="logRetentionRetryOptions" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetentionRetryOptions"></a>
+
+```typescript
+public readonly logRetentionRetryOptions: LogRetentionRetryOptions;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.LogRetentionRetryOptions
+- *Default:* Default AWS SDK retry options.
+
+When log retention is specified, a custom resource attempts to create the CloudWatch log group.
+
+These options control the retry policy when interacting with CloudWatch APIs.
+
+---
+
+##### `logRetentionRole`<sup>Optional</sup> <a name="logRetentionRole" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetentionRole"></a>
+
+```typescript
+public readonly logRetentionRole: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+- *Default:* A new role is created.
+
+The IAM role for the Lambda function associated with the custom resource that sets the retention policy.
+
+---
+
+##### `memorySize`<sup>Optional</sup> <a name="memorySize" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.memorySize"></a>
+
+```typescript
+public readonly memorySize: number;
+```
+
+- *Type:* number
+- *Default:* 128
+
+The amount of memory, in MB, that is allocated to your Lambda function.
+
+Lambda uses this value to proportionally allocate the amount of CPU
+power. For more information, see Resource Model in the AWS Lambda
+Developer Guide.
+
+---
+
+##### `profiling`<sup>Optional</sup> <a name="profiling" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.profiling"></a>
+
+```typescript
+public readonly profiling: boolean;
+```
+
+- *Type:* boolean
+- *Default:* No profiling.
+
+Enable profiling.
+
+> [https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up-lambda.html](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up-lambda.html)
+
+---
+
+##### `profilingGroup`<sup>Optional</sup> <a name="profilingGroup" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.profilingGroup"></a>
+
+```typescript
+public readonly profilingGroup: IProfilingGroup;
+```
+
+- *Type:* aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup
+- *Default:* A new profiling group will be created if `profiling` is set.
+
+Profiling Group.
+
+> [https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up-lambda.html](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up-lambda.html)
+
+---
+
+##### `reservedConcurrentExecutions`<sup>Optional</sup> <a name="reservedConcurrentExecutions" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.reservedConcurrentExecutions"></a>
+
+```typescript
+public readonly reservedConcurrentExecutions: number;
+```
+
+- *Type:* number
+- *Default:* No specific limit - account limit.
+
+The maximum of concurrent executions you want to reserve for the function.
+
+> [https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html](https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html)
+
+---
+
+##### `role`<sup>Optional</sup> <a name="role" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.role"></a>
+
+```typescript
+public readonly role: IRole;
+```
+
+- *Type:* aws-cdk-lib.aws_iam.IRole
+- *Default:* A unique role will be generated for this lambda function. Both supplied and generated roles can always be changed by calling `addToRolePolicy`.
+
+Lambda execution role.
+
+This is the role that will be assumed by the function upon execution.
+It controls the permissions that the function will have. The Role must
+be assumable by the 'lambda.amazonaws.com' service principal.
+
+The default Role automatically has permissions granted for Lambda execution. If you
+provide a Role, you must add the relevant AWS managed policies yourself.
+
+The relevant managed policies are "service-role/AWSLambdaBasicExecutionRole" and
+"service-role/AWSLambdaVPCAccessExecutionRole".
+
+---
+
+##### `securityGroups`<sup>Optional</sup> <a name="securityGroups" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.securityGroups"></a>
+
+```typescript
+public readonly securityGroups: ISecurityGroup[];
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.ISecurityGroup[]
+- *Default:* If the function is placed within a VPC and a security group is not specified, either by this or securityGroup prop, a dedicated security group will be created for this function.
+
+The list of security groups to associate with the Lambda's network interfaces.
+
+Only used if 'vpc' is supplied.
+
+---
+
+##### `timeout`<sup>Optional</sup> <a name="timeout" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.timeout"></a>
+
+```typescript
+public readonly timeout: Duration;
+```
+
+- *Type:* aws-cdk-lib.Duration
+- *Default:* Duration.seconds(3)
+
+The function execution time (in seconds) after which Lambda terminates the function.
+
+Because the execution time affects cost, set this value
+based on the function's expected execution time.
+
+---
+
+##### `tracing`<sup>Optional</sup> <a name="tracing" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.tracing"></a>
+
+```typescript
+public readonly tracing: Tracing;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.Tracing
+- *Default:* Tracing.Disabled
+
+Enable AWS X-Ray Tracing for Lambda Function.
+
+---
+
+##### `vpc`<sup>Optional</sup> <a name="vpc" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.vpc"></a>
+
+```typescript
+public readonly vpc: IVpc;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.IVpc
+- *Default:* Function is not placed within a VPC.
+
+VPC network to place Lambda network interfaces.
+
+Specify this if the Lambda function needs to access resources in a VPC.
+This is required when `vpcSubnets` is specified.
+
+---
+
+##### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.vpcSubnets"></a>
+
+```typescript
+public readonly vpcSubnets: SubnetSelection;
+```
+
+- *Type:* aws-cdk-lib.aws_ec2.SubnetSelection
+- *Default:* the Vpc default strategy if not specified
+
+Where to place the network interfaces within the VPC.
+
+This requires `vpc` to be specified in order for interfaces to actually be
+placed in the subnets. If `vpc` is not specify, this will raise an error.
+
+Note: Internet access for Lambda Functions requires a NAT Gateway, so picking
+public subnets is not allowed (unless `allowPublicSubnet` is set to `true`).
+
+---
+
+##### `authorizerOptions`<sup>Required</sup> <a name="authorizerOptions" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.authorizerOptions"></a>
+
+```typescript
+public readonly authorizerOptions: IAuthorizerOptions;
+```
+
+- *Type:* <a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptions">IAuthorizerOptions</a>
+
+---
 
 
+## Protocols <a name="Protocols" id="Protocols"></a>
+
+### IAuthorizerOptions <a name="IAuthorizerOptions" id="cdk-lambda-token-authorizer-jwt.IAuthorizerOptions"></a>
+
+- *Implemented By:* <a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptions">IAuthorizerOptions</a>
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.jwks">jwks</a></code> | <code><a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks">IAuthorizerOptionsJwks</a></code> | *No description.* |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.secret">secret</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.tokenPayloadJsonSchema">tokenPayloadJsonSchema</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `jwks`<sup>Optional</sup> <a name="jwks" id="cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.jwks"></a>
+
+```typescript
+public readonly jwks: IAuthorizerOptionsJwks;
+```
+
+- *Type:* <a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks">IAuthorizerOptionsJwks</a>
+
+---
+
+##### `secret`<sup>Optional</sup> <a name="secret" id="cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.secret"></a>
+
+```typescript
+public readonly secret: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tokenPayloadJsonSchema`<sup>Optional</sup> <a name="tokenPayloadJsonSchema" id="cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.tokenPayloadJsonSchema"></a>
+
+```typescript
+public readonly tokenPayloadJsonSchema: string;
+```
+
+- *Type:* string
+
+---
+
+### IAuthorizerOptionsJwks <a name="IAuthorizerOptionsJwks" id="cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks"></a>
+
+- *Implemented By:* <a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks">IAuthorizerOptionsJwks</a>
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks.property.kid">kid</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks.property.uri">uri</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `kid`<sup>Required</sup> <a name="kid" id="cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks.property.kid"></a>
+
+```typescript
+public readonly kid: string;
+```
+
+- *Type:* string
+
+---
+
+##### `uri`<sup>Required</sup> <a name="uri" id="cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks.property.uri"></a>
+
+```typescript
+public readonly uri: string;
+```
+
+- *Type:* string
+
+---
 

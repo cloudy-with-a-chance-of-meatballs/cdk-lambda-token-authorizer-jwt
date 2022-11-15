@@ -2,10 +2,10 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
 enum FnEnvVars {
-  JwksUri = "TOKEN_AUTHORIZER_JWKS_URI",
-  JwksKid = "TOKEN_AUTHORIZER_JWKS_KID",
-  Secret  = "TOKEN_AUTHORIZER_JWT_VERIFICATION_SECRET",
-  Schema  = "TOKEN_AUTHORIZER_JWT_VALIDATOR_SCHEMA_JSON"
+  JwksUri = 'TOKEN_AUTHORIZER_JWKS_URI',
+  JwksKid = 'TOKEN_AUTHORIZER_JWKS_KID',
+  Secret = 'TOKEN_AUTHORIZER_JWT_VERIFICATION_SECRET',
+  Schema = 'TOKEN_AUTHORIZER_JWT_VALIDATOR_SCHEMA_JSON'
 };
 
 export interface IAuthorizerOptionsJwks {
