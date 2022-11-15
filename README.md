@@ -103,3 +103,5 @@ new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: {
   secret: mySymmetricSecret
 }});
 ```
+
+🍻
