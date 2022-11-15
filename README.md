@@ -2,6 +2,8 @@
 
 Add a lambda function to your project which can be used as a apigateway token authorizer
 
+[![View on Construct Hub](https://constructs.dev/badge?package=%40cloudy-with-a-chance-of-meatballs%2Fcdk-lambda-token-authorizer-jwt)](https://constructs.dev/packages/@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt)
+
 [![GitHub](https://img.shields.io/github/license/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt?style=flat-square)](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/blob/main/LICENSE)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt?sort=semver&style=flat-square)](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/releases)
 [![npm (scoped)](https://img.shields.io/npm/v/@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt?style=flat-square)](https://www.npmjs.com/package/@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt)
