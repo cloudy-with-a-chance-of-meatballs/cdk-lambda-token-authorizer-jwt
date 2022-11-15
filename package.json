@@ -36,11 +36,9 @@
   },
   "devDependencies": {
     "@types/jest": "^27",
-    "@types/node": "^18",
+    "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "aws-cdk-lib": "2.5.0",
-    "constructs": "10.0.5",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^3.5.2",
@@ -49,10 +47,10 @@
     "jest-junit": "^13",
     "jsii": "^1.71.0",
     "jsii-diff": "^1.71.0",
-    "jsii-docgen": "^7.0.147",
+    "jsii-docgen": "^7.0.149",
     "jsii-pacmak": "^1.71.0",
     "json-schema": "^0.4.0",
-    "projen": "^0.65.21",
+    "projen": "^0.65.23",
     "standard-version": "^9",
     "ts-jest": "^27",
     "typescript": "^4.8.4"
@@ -60,6 +58,10 @@
   "peerDependencies": {
     "aws-cdk-lib": "^2.5.0",
     "constructs": "^10.0.5"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.50.0",
+    "constructs": "^10.1.160"
   },
   "keywords": [
     "api",
@@ -73,7 +75,7 @@
     "tokenauthorizer"
   ],
   "engines": {
-    "node": ">= 18.12.1"
+    "node": ">= 16.18.1"
   },
   "main": "lib/index.js",
   "license": "MIT",

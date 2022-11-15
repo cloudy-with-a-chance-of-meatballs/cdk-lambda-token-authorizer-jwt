@@ -46,15 +46,19 @@ new TokenAuthorizerJwtFunction(scope: Construct, id: string, props: FunctionOpti
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.applyRemovalPolicy">applyRemovalPolicy</a></code> | Apply the given removal policy to this resource. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addEventSource">addEventSource</a></code> | Adds an event source to this function. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addEventSourceMapping">addEventSourceMapping</a></code> | Adds an event source that maps to this AWS Lambda function. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addFunctionUrl">addFunctionUrl</a></code> | Adds a url to this lambda function. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addPermission">addPermission</a></code> | Adds a permission to the Lambda resource policy. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addToRolePolicy">addToRolePolicy</a></code> | Adds a statement to the IAM role assumed by the instance. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.configureAsyncInvoke">configureAsyncInvoke</a></code> | Configures options for asynchronous invocation. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.considerWarningOnInvokeFunctionPermissions">considerWarningOnInvokeFunctionPermissions</a></code> | A warning will be added to functions under the following conditions: - permissions that include `lambda:InvokeFunction` are added to the unqualified function. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvoke">grantInvoke</a></code> | Grant the given identity permissions to invoke this Lambda. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvokeUrl">grantInvokeUrl</a></code> | Grant the given identity permissions to invoke this Lambda Function URL. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metric">metric</a></code> | Return the given named metric for this Function. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metricDuration">metricDuration</a></code> | How long execution of this Lambda takes. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metricErrors">metricErrors</a></code> | How many invocations of this Lambda fail. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metricInvocations">metricInvocations</a></code> | How often this Lambda is invoked. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metricThrottles">metricThrottles</a></code> | How often this Lambda is throttled. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addAlias">addAlias</a></code> | Defines an alias for this function. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addEnvironment">addEnvironment</a></code> | Adds an environment variable to this Lambda function. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addLayers">addLayers</a></code> | Adds one or more Lambda Layers to this Lambda function. |
 
@@ -132,6 +136,20 @@ Adds an event source that maps to this AWS Lambda function.
 
 ---
 
+##### `addFunctionUrl` <a name="addFunctionUrl" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addFunctionUrl"></a>
+
+```typescript
+public addFunctionUrl(options?: FunctionUrlOptions): FunctionUrl
+```
+
+Adds a url to this lambda function.
+
+###### `options`<sup>Optional</sup> <a name="options" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addFunctionUrl.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.FunctionUrlOptions
+
+---
+
 ##### `addPermission` <a name="addPermission" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addPermission"></a>
 
 ```typescript
@@ -186,6 +204,31 @@ Configures options for asynchronous invocation.
 
 ---
 
+##### `considerWarningOnInvokeFunctionPermissions` <a name="considerWarningOnInvokeFunctionPermissions" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.considerWarningOnInvokeFunctionPermissions"></a>
+
+```typescript
+public considerWarningOnInvokeFunctionPermissions(scope: Construct, action: string): void
+```
+
+A warning will be added to functions under the following conditions: - permissions that include `lambda:InvokeFunction` are added to the unqualified function.
+
+function.currentVersion is invoked before or after the permission is created.
+
+This applies only to permissions on Lambda functions, not versions or aliases.
+This function is overridden as a noOp for QualifiedFunctionBase.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.considerWarningOnInvokeFunctionPermissions.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `action`<sup>Required</sup> <a name="action" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.considerWarningOnInvokeFunctionPermissions.parameter.action"></a>
+
+- *Type:* string
+
+---
+
 ##### `grantInvoke` <a name="grantInvoke" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvoke"></a>
 
 ```typescript
@@ -195,6 +238,20 @@ public grantInvoke(grantee: IGrantable): Grant
 Grant the given identity permissions to invoke this Lambda.
 
 ###### `grantee`<sup>Required</sup> <a name="grantee" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvoke.parameter.grantee"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+---
+
+##### `grantInvokeUrl` <a name="grantInvokeUrl" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvokeUrl"></a>
+
+```typescript
+public grantInvokeUrl(grantee: IGrantable): Grant
+```
+
+Grant the given identity permissions to invoke this Lambda Function URL.
+
+###### `grantee`<sup>Required</sup> <a name="grantee" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvokeUrl.parameter.grantee"></a>
 
 - *Type:* aws-cdk-lib.aws_iam.IGrantable
 
@@ -284,6 +341,46 @@ Sum over 5 minutes
 
 ---
 
+##### `addAlias` <a name="addAlias" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addAlias"></a>
+
+```typescript
+public addAlias(aliasName: string, options?: AliasOptions): Alias
+```
+
+Defines an alias for this function.
+
+The alias will automatically be updated to point to the latest version of
+the function as it is being updated during a deployment.
+
+```ts
+declare const fn: lambda.Function;
+
+fn.addAlias('Live');
+
+// Is equivalent to
+
+new lambda.Alias(this, 'AliasLive', {
+   aliasName: 'Live',
+   version: fn.currentVersion,
+});
+```
+
+###### `aliasName`<sup>Required</sup> <a name="aliasName" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addAlias.parameter.aliasName"></a>
+
+- *Type:* string
+
+The name of the alias.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addAlias.parameter.options"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda.AliasOptions
+
+Alias options.
+
+---
+
 ##### `addEnvironment` <a name="addEnvironment" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addEnvironment"></a>
 
 ```typescript
@@ -339,10 +436,12 @@ the layers to be added.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.isOwnedResource">isOwnedResource</a></code> | Returns true if the construct was created by CDK, and false otherwise. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.isResource">isResource</a></code> | Check whether the given construct is a Resource. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.classifyVersionProperty">classifyVersionProperty</a></code> | Record whether specific properties in the `AWS::Lambda::Function` resource should also be associated to the Version resource. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.fromFunctionArn">fromFunctionArn</a></code> | Import a lambda function into the CDK using its ARN. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.fromFunctionAttributes">fromFunctionAttributes</a></code> | Creates a Lambda function object which represents a function not defined within this stack. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.fromFunctionName">fromFunctionName</a></code> | Import a lambda function into the CDK using its name. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metricAll">metricAll</a></code> | Return the given named metric for this Lambda. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metricAllConcurrentExecutions">metricAllConcurrentExecutions</a></code> | Metric for the number of concurrent executions across all Lambdas. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metricAllDuration">metricAllDuration</a></code> | Metric for the Duration executing all Lambdas. |
@@ -353,7 +452,7 @@ the layers to be added.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.isConstruct"></a>
 
 ```typescript
 import { TokenAuthorizerJwtFunction } from 'cdk-lambda-token-authorizer-jwt'
@@ -363,11 +462,41 @@ TokenAuthorizerJwtFunction.isConstruct(x: any)
 
 Checks if `x` is a construct.
 
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
 ###### `x`<sup>Required</sup> <a name="x" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
 Any object.
+
+---
+
+##### `isOwnedResource` <a name="isOwnedResource" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.isOwnedResource"></a>
+
+```typescript
+import { TokenAuthorizerJwtFunction } from 'cdk-lambda-token-authorizer-jwt'
+
+TokenAuthorizerJwtFunction.isOwnedResource(construct: IConstruct)
+```
+
+Returns true if the construct was created by CDK, and false otherwise.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.isOwnedResource.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
 
 ---
 
@@ -474,6 +603,34 @@ The name of the lambda construct.
 - *Type:* aws-cdk-lib.aws_lambda.FunctionAttributes
 
 the attributes of the function to import.
+
+---
+
+##### `fromFunctionName` <a name="fromFunctionName" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.fromFunctionName"></a>
+
+```typescript
+import { TokenAuthorizerJwtFunction } from 'cdk-lambda-token-authorizer-jwt'
+
+TokenAuthorizerJwtFunction.fromFunctionName(scope: Construct, id: string, functionName: string)
+```
+
+Import a lambda function into the CDK using its name.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.fromFunctionName.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.fromFunctionName.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `functionName`<sup>Required</sup> <a name="functionName" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.fromFunctionName.parameter.functionName"></a>
+
+- *Type:* string
 
 ---
 
@@ -610,11 +767,13 @@ Metric for the number of unreserved concurrent executions across all Lambdas.
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.isBoundToVpc">isBoundToVpc</a></code> | <code>boolean</code> | Whether or not this Lambda function was bound to a VPC. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.latestVersion">latestVersion</a></code> | <code>aws-cdk-lib.aws_lambda.IVersion</code> | The `$LATEST` version of this function. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.permissionsNode">permissionsNode</a></code> | <code>constructs.Node</code> | The construct node where permissions are attached. |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.resourceArnsForGrantInvoke">resourceArnsForGrantInvoke</a></code> | <code>string[]</code> | The ARN(s) to put into the resource field of the generated IAM policy for grantInvoke(). |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Execution role associated with this function. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.currentVersion">currentVersion</a></code> | <code>aws-cdk-lib.aws_lambda.Version</code> | Returns a `lambda.Version` which represents the current version of this Lambda function. A new version will be created every time the function's configuration changes. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | The LogGroup where the Lambda function's logs are made available. |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.runtime">runtime</a></code> | <code>aws-cdk-lib.aws_lambda.Runtime</code> | The runtime configured for this lambda. |
-| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.deadLetterQueue">deadLetterQueue</a></code> | <code>aws-cdk-lib.aws_sqs.IQueue</code> | The DLQ associated with this Lambda Function (this is an optional attribute). |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.deadLetterQueue">deadLetterQueue</a></code> | <code>aws-cdk-lib.aws_sqs.IQueue</code> | The DLQ (as queue) associated with this Lambda Function (this is an optional attribute). |
+| <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.deadLetterTopic">deadLetterTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | The DLQ (as topic) associated with this Lambda Function (this is an optional attribute). |
 | <code><a href="#cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The timeout configured for this lambda. |
 
 ---
@@ -769,6 +928,18 @@ The construct node where permissions are attached.
 
 ---
 
+##### `resourceArnsForGrantInvoke`<sup>Required</sup> <a name="resourceArnsForGrantInvoke" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.resourceArnsForGrantInvoke"></a>
+
+```typescript
+public readonly resourceArnsForGrantInvoke: string[];
+```
+
+- *Type:* string[]
+
+The ARN(s) to put into the resource field of the generated IAM policy for grantInvoke().
+
+---
+
 ##### `role`<sup>Optional</sup> <a name="role" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.role"></a>
 
 ```typescript
@@ -835,7 +1006,19 @@ public readonly deadLetterQueue: IQueue;
 
 - *Type:* aws-cdk-lib.aws_sqs.IQueue
 
-The DLQ associated with this Lambda Function (this is an optional attribute).
+The DLQ (as queue) associated with this Lambda Function (this is an optional attribute).
+
+---
+
+##### `deadLetterTopic`<sup>Optional</sup> <a name="deadLetterTopic" id="cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.property.deadLetterTopic"></a>
+
+```typescript
+public readonly deadLetterTopic: ITopic;
+```
+
+- *Type:* aws-cdk-lib.aws_sns.ITopic
+
+The DLQ (as topic) associated with this Lambda Function (this is an optional attribute).
 
 ---
 
