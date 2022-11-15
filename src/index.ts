@@ -5,10 +5,10 @@ export class TokenAuthorizerJwtFunction extends lambda.Function {
   public constructor(scope: Construct, id: string, props: lambda.FunctionOptions) {
 
     super(scope, id, {
+      ...props,
       handler: 'index.lambdaHandler',
       code: lambda.Code.fromAsset('function'),
       runtime: lambda.Runtime.NODEJS_16_X,
-      ...props,
     });
   }
 }
