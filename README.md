@@ -17,8 +17,8 @@ Add a lambda function to your project which can be used as a apigateway token au
 ### TypeScript
 
 ```shell
-npm install cdk-lambda-token-authorizer-jwt
-yarn add cdk-lambda-token-authorizer-jwt
+npm install @cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt
+yarn add @cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt
 ```
 
 ### Python
@@ -42,7 +42,7 @@ import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
-import { TokenAuthorizerJwtFunction } from "cdk-lambda-token-authorizer-jwt";
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
 
 export class HelloworldStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
