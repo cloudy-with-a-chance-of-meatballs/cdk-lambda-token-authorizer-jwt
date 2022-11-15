@@ -10,7 +10,7 @@ const template = Template.fromStack(stack);
 
 test('Lambda functions should be configured with properties and execution roles', () => {
   template.hasResourceProperties('AWS::Lambda::Function', {
-    Runtime: 'nodejs14.x',
+    Runtime: 'nodejs16.x',
   });
 
   template.hasResourceProperties('AWS::IAM::Role', {

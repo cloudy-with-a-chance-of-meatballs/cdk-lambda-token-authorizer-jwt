@@ -7,7 +7,7 @@ export class TokenAuthorizerJwtFunction extends lambda.Function {
     super(scope, id, {
       handler: 'index.lambdaHandler',
       code: lambda.Code.fromAsset('function'),
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: lambda.Runtime.NODEJS_16_X,
       ...props,
     });
   }
