@@ -29,6 +29,7 @@ enum FnErrorConstants {
   JwksKid     = "MISSING_JWKS_KID",
   ConfigEnv   = "MISSING_PROCESS_ENV_VARIABLES",
   EventToken  = "MISSING_AUTHORIZATION_TOKEN",
+  Unknown     = "UNKNOWN_ERROR",
 };
 
 type AuthorizerPolicyDocument = {
