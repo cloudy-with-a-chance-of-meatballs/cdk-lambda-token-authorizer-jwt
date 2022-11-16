@@ -41,9 +41,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
   jestOptions: {
     extraCliOptions: ['--testMatch "**/*.test.ts"'],
   },
+  gitignore: ['.idea/'],
 });
 
-project.setScript('force-rebuild', 'git clean -f -d -x && find . -type f -exec grep -l "Generated" {} \; -exec rm -f {} \;');
+project.setScript('force-rebuild', 'git clean -f -d -x && find . -type f -exec grep -l "Generated" {} \\; -exec rm -f {} \\;');
 
 project.setScript('cdk', 'cdk');
 

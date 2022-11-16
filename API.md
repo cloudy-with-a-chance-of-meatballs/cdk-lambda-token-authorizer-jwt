@@ -9,14 +9,14 @@
 ```typescript
 import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt'
 
-new TokenAuthorizerJwtFunction(scope: Construct, id: string, props: TokenAuthorizerJwtFunctionOptions)
+new TokenAuthorizerJwtFunction(scope: Construct, id: string, props: TokenAuthorizerFunctionOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.props">props</a></code> | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions">TokenAuthorizerJwtFunctionOptions</a></code> | *No description.* |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.props">props</a></code> | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions">TokenAuthorizerFunctionOptions</a></code> | *No description.* |
 
 ---
 
@@ -34,7 +34,7 @@ new TokenAuthorizerJwtFunction(scope: Construct, id: string, props: TokenAuthori
 
 ##### `props`<sup>Required</sup> <a name="props" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.Initializer.parameter.props"></a>
 
-- *Type:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions">TokenAuthorizerJwtFunctionOptions</a>
+- *Type:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions">TokenAuthorizerFunctionOptions</a>
 
 ---
 
@@ -1037,60 +1037,60 @@ The timeout configured for this lambda.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
-### TokenAuthorizerJwtFunctionOptions <a name="TokenAuthorizerJwtFunctionOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions"></a>
+### TokenAuthorizerFunctionOptions <a name="TokenAuthorizerFunctionOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions"></a>
 
-#### Initializer <a name="Initializer" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.Initializer"></a>
+#### Initializer <a name="Initializer" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.Initializer"></a>
 
 ```typescript
-import { TokenAuthorizerJwtFunctionOptions } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt'
+import { TokenAuthorizerFunctionOptions } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt'
 
-const tokenAuthorizerJwtFunctionOptions: TokenAuthorizerJwtFunctionOptions = { ... }
+const tokenAuthorizerFunctionOptions: TokenAuthorizerFunctionOptions = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.maxEventAge">maxEventAge</a></code> | <code>aws-cdk-lib.Duration</code> | The maximum age of a request that Lambda sends to a function for processing. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.onFailure">onFailure</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for failed invocations. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.onSuccess">onSuccess</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for successful invocations. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.retryAttempts">retryAttempts</a></code> | <code>number</code> | The maximum number of times to retry when the function returns an error. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.allowAllOutbound">allowAllOutbound</a></code> | <code>boolean</code> | Whether to allow the Lambda to send all network traffic. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.allowPublicSubnet">allowPublicSubnet</a></code> | <code>boolean</code> | Lambda Functions in a public subnet can NOT access the internet. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.architecture">architecture</a></code> | <code>aws-cdk-lib.aws_lambda.Architecture</code> | The system architectures compatible with this lambda function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.codeSigningConfig">codeSigningConfig</a></code> | <code>aws-cdk-lib.aws_lambda.ICodeSigningConfig</code> | Code signing config associated with this function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.currentVersionOptions">currentVersionOptions</a></code> | <code>aws-cdk-lib.aws_lambda.VersionOptions</code> | Options for the `lambda.Version` resource automatically created by the `fn.currentVersion` method. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterQueue">deadLetterQueue</a></code> | <code>aws-cdk-lib.aws_sqs.IQueue</code> | The SQS queue to use if DLQ is enabled. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterQueueEnabled">deadLetterQueueEnabled</a></code> | <code>boolean</code> | Enabled DLQ. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterTopic">deadLetterTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | The SNS topic to use as a DLQ. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.description">description</a></code> | <code>string</code> | A description of the function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.environment">environment</a></code> | <code>{[ key: string ]: string}</code> | Key-value pairs that Lambda caches and makes available for your Lambda functions. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.environmentEncryption">environmentEncryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | The AWS KMS key that's used to encrypt your function's environment variables. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.ephemeralStorageSize">ephemeralStorageSize</a></code> | <code>aws-cdk-lib.Size</code> | The size of the function’s /tmp directory in MiB. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.events">events</a></code> | <code>aws-cdk-lib.aws_lambda.IEventSource[]</code> | Event sources for this function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.filesystem">filesystem</a></code> | <code>aws-cdk-lib.aws_lambda.FileSystem</code> | The filesystem configuration for the lambda function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.functionName">functionName</a></code> | <code>string</code> | A name for the function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.initialPolicy">initialPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Initial policy statements to add to the created Lambda Role. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.insightsVersion">insightsVersion</a></code> | <code>aws-cdk-lib.aws_lambda.LambdaInsightsVersion</code> | Specify the version of CloudWatch Lambda insights to use for monitoring. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.layers">layers</a></code> | <code>aws-cdk-lib.aws_lambda.ILayerVersion[]</code> | A list of layers to add to the function's execution environment. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The number of days log events are kept in CloudWatch Logs. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.memorySize">memorySize</a></code> | <code>number</code> | The amount of memory, in MB, that is allocated to your Lambda function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.profiling">profiling</a></code> | <code>boolean</code> | Enable profiling. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC network to place Lambda network interfaces. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.vpcSubnets">vpcSubnets</a></code> | <code>aws-cdk-lib.aws_ec2.SubnetSelection</code> | Where to place the network interfaces within the VPC. |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.authorizerOptions">authorizerOptions</a></code> | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions">IAuthorizerOptions</a></code> | *No description.* |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.maxEventAge">maxEventAge</a></code> | <code>aws-cdk-lib.Duration</code> | The maximum age of a request that Lambda sends to a function for processing. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.onFailure">onFailure</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for failed invocations. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.onSuccess">onSuccess</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for successful invocations. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.retryAttempts">retryAttempts</a></code> | <code>number</code> | The maximum number of times to retry when the function returns an error. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.allowAllOutbound">allowAllOutbound</a></code> | <code>boolean</code> | Whether to allow the Lambda to send all network traffic. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.allowPublicSubnet">allowPublicSubnet</a></code> | <code>boolean</code> | Lambda Functions in a public subnet can NOT access the internet. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.architecture">architecture</a></code> | <code>aws-cdk-lib.aws_lambda.Architecture</code> | The system architectures compatible with this lambda function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.codeSigningConfig">codeSigningConfig</a></code> | <code>aws-cdk-lib.aws_lambda.ICodeSigningConfig</code> | Code signing config associated with this function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.currentVersionOptions">currentVersionOptions</a></code> | <code>aws-cdk-lib.aws_lambda.VersionOptions</code> | Options for the `lambda.Version` resource automatically created by the `fn.currentVersion` method. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.deadLetterQueue">deadLetterQueue</a></code> | <code>aws-cdk-lib.aws_sqs.IQueue</code> | The SQS queue to use if DLQ is enabled. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.deadLetterQueueEnabled">deadLetterQueueEnabled</a></code> | <code>boolean</code> | Enabled DLQ. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.deadLetterTopic">deadLetterTopic</a></code> | <code>aws-cdk-lib.aws_sns.ITopic</code> | The SNS topic to use as a DLQ. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.description">description</a></code> | <code>string</code> | A description of the function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.environment">environment</a></code> | <code>{[ key: string ]: string}</code> | Key-value pairs that Lambda caches and makes available for your Lambda functions. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.environmentEncryption">environmentEncryption</a></code> | <code>aws-cdk-lib.aws_kms.IKey</code> | The AWS KMS key that's used to encrypt your function's environment variables. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.ephemeralStorageSize">ephemeralStorageSize</a></code> | <code>aws-cdk-lib.Size</code> | The size of the function’s /tmp directory in MiB. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.events">events</a></code> | <code>aws-cdk-lib.aws_lambda.IEventSource[]</code> | Event sources for this function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.filesystem">filesystem</a></code> | <code>aws-cdk-lib.aws_lambda.FileSystem</code> | The filesystem configuration for the lambda function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.functionName">functionName</a></code> | <code>string</code> | A name for the function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.initialPolicy">initialPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Initial policy statements to add to the created Lambda Role. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.insightsVersion">insightsVersion</a></code> | <code>aws-cdk-lib.aws_lambda.LambdaInsightsVersion</code> | Specify the version of CloudWatch Lambda insights to use for monitoring. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.layers">layers</a></code> | <code>aws-cdk-lib.aws_lambda.ILayerVersion[]</code> | A list of layers to add to the function's execution environment. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The number of days log events are kept in CloudWatch Logs. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.memorySize">memorySize</a></code> | <code>number</code> | The amount of memory, in MB, that is allocated to your Lambda function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.profiling">profiling</a></code> | <code>boolean</code> | Enable profiling. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC network to place Lambda network interfaces. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.vpcSubnets">vpcSubnets</a></code> | <code>aws-cdk-lib.aws_ec2.SubnetSelection</code> | Where to place the network interfaces within the VPC. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.tokenAuthorizerOptions">tokenAuthorizerOptions</a></code> | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenAuthorizerOptions">ITokenAuthorizerOptions</a></code> | *No description.* |
 
 ---
 
-##### `maxEventAge`<sup>Optional</sup> <a name="maxEventAge" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.maxEventAge"></a>
+##### `maxEventAge`<sup>Optional</sup> <a name="maxEventAge" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.maxEventAge"></a>
 
 ```typescript
 public readonly maxEventAge: Duration;
@@ -1106,7 +1106,7 @@ Maximum: 6 hours
 
 ---
 
-##### `onFailure`<sup>Optional</sup> <a name="onFailure" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.onFailure"></a>
+##### `onFailure`<sup>Optional</sup> <a name="onFailure" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.onFailure"></a>
 
 ```typescript
 public readonly onFailure: IDestination;
@@ -1119,7 +1119,7 @@ The destination for failed invocations.
 
 ---
 
-##### `onSuccess`<sup>Optional</sup> <a name="onSuccess" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.onSuccess"></a>
+##### `onSuccess`<sup>Optional</sup> <a name="onSuccess" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.onSuccess"></a>
 
 ```typescript
 public readonly onSuccess: IDestination;
@@ -1132,7 +1132,7 @@ The destination for successful invocations.
 
 ---
 
-##### `retryAttempts`<sup>Optional</sup> <a name="retryAttempts" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.retryAttempts"></a>
+##### `retryAttempts`<sup>Optional</sup> <a name="retryAttempts" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.retryAttempts"></a>
 
 ```typescript
 public readonly retryAttempts: number;
@@ -1148,7 +1148,7 @@ Maximum: 2
 
 ---
 
-##### `allowAllOutbound`<sup>Optional</sup> <a name="allowAllOutbound" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.allowAllOutbound"></a>
+##### `allowAllOutbound`<sup>Optional</sup> <a name="allowAllOutbound" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.allowAllOutbound"></a>
 
 ```typescript
 public readonly allowAllOutbound: boolean;
@@ -1164,7 +1164,7 @@ Lambda to connect to network targets.
 
 ---
 
-##### `allowPublicSubnet`<sup>Optional</sup> <a name="allowPublicSubnet" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.allowPublicSubnet"></a>
+##### `allowPublicSubnet`<sup>Optional</sup> <a name="allowPublicSubnet" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.allowPublicSubnet"></a>
 
 ```typescript
 public readonly allowPublicSubnet: boolean;
@@ -1181,7 +1181,7 @@ Use this property to acknowledge this limitation and still place the function in
 
 ---
 
-##### `architecture`<sup>Optional</sup> <a name="architecture" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.architecture"></a>
+##### `architecture`<sup>Optional</sup> <a name="architecture" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.architecture"></a>
 
 ```typescript
 public readonly architecture: Architecture;
@@ -1194,7 +1194,7 @@ The system architectures compatible with this lambda function.
 
 ---
 
-##### `codeSigningConfig`<sup>Optional</sup> <a name="codeSigningConfig" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.codeSigningConfig"></a>
+##### `codeSigningConfig`<sup>Optional</sup> <a name="codeSigningConfig" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.codeSigningConfig"></a>
 
 ```typescript
 public readonly codeSigningConfig: ICodeSigningConfig;
@@ -1207,7 +1207,7 @@ Code signing config associated with this function.
 
 ---
 
-##### `currentVersionOptions`<sup>Optional</sup> <a name="currentVersionOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.currentVersionOptions"></a>
+##### `currentVersionOptions`<sup>Optional</sup> <a name="currentVersionOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.currentVersionOptions"></a>
 
 ```typescript
 public readonly currentVersionOptions: VersionOptions;
@@ -1220,7 +1220,7 @@ Options for the `lambda.Version` resource automatically created by the `fn.curre
 
 ---
 
-##### `deadLetterQueue`<sup>Optional</sup> <a name="deadLetterQueue" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterQueue"></a>
+##### `deadLetterQueue`<sup>Optional</sup> <a name="deadLetterQueue" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.deadLetterQueue"></a>
 
 ```typescript
 public readonly deadLetterQueue: IQueue;
@@ -1235,7 +1235,7 @@ If SNS topic is desired, specify `deadLetterTopic` property instead.
 
 ---
 
-##### `deadLetterQueueEnabled`<sup>Optional</sup> <a name="deadLetterQueueEnabled" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterQueueEnabled"></a>
+##### `deadLetterQueueEnabled`<sup>Optional</sup> <a name="deadLetterQueueEnabled" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.deadLetterQueueEnabled"></a>
 
 ```typescript
 public readonly deadLetterQueueEnabled: boolean;
@@ -1251,7 +1251,7 @@ an SQS queue with default options will be defined for your Function.
 
 ---
 
-##### `deadLetterTopic`<sup>Optional</sup> <a name="deadLetterTopic" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.deadLetterTopic"></a>
+##### `deadLetterTopic`<sup>Optional</sup> <a name="deadLetterTopic" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.deadLetterTopic"></a>
 
 ```typescript
 public readonly deadLetterTopic: ITopic;
@@ -1267,7 +1267,7 @@ rather than an SNS topic. Using an SNS topic as a DLQ requires this property to 
 
 ---
 
-##### `description`<sup>Optional</sup> <a name="description" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.description"></a>
+##### `description`<sup>Optional</sup> <a name="description" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.description"></a>
 
 ```typescript
 public readonly description: string;
@@ -1280,7 +1280,7 @@ A description of the function.
 
 ---
 
-##### `environment`<sup>Optional</sup> <a name="environment" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.environment"></a>
+##### `environment`<sup>Optional</sup> <a name="environment" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.environment"></a>
 
 ```typescript
 public readonly environment: {[ key: string ]: string};
@@ -1297,7 +1297,7 @@ Lambda function source code.
 
 ---
 
-##### `environmentEncryption`<sup>Optional</sup> <a name="environmentEncryption" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.environmentEncryption"></a>
+##### `environmentEncryption`<sup>Optional</sup> <a name="environmentEncryption" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.environmentEncryption"></a>
 
 ```typescript
 public readonly environmentEncryption: IKey;
@@ -1310,7 +1310,7 @@ The AWS KMS key that's used to encrypt your function's environment variables.
 
 ---
 
-##### `ephemeralStorageSize`<sup>Optional</sup> <a name="ephemeralStorageSize" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.ephemeralStorageSize"></a>
+##### `ephemeralStorageSize`<sup>Optional</sup> <a name="ephemeralStorageSize" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.ephemeralStorageSize"></a>
 
 ```typescript
 public readonly ephemeralStorageSize: Size;
@@ -1323,7 +1323,7 @@ The size of the function’s /tmp directory in MiB.
 
 ---
 
-##### `events`<sup>Optional</sup> <a name="events" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.events"></a>
+##### `events`<sup>Optional</sup> <a name="events" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.events"></a>
 
 ```typescript
 public readonly events: IEventSource[];
@@ -1338,7 +1338,7 @@ You can also add event sources using `addEventSource`.
 
 ---
 
-##### `filesystem`<sup>Optional</sup> <a name="filesystem" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.filesystem"></a>
+##### `filesystem`<sup>Optional</sup> <a name="filesystem" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.filesystem"></a>
 
 ```typescript
 public readonly filesystem: FileSystem;
@@ -1351,7 +1351,7 @@ The filesystem configuration for the lambda function.
 
 ---
 
-##### `functionName`<sup>Optional</sup> <a name="functionName" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.functionName"></a>
+##### `functionName`<sup>Optional</sup> <a name="functionName" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.functionName"></a>
 
 ```typescript
 public readonly functionName: string;
@@ -1364,7 +1364,7 @@ A name for the function.
 
 ---
 
-##### `initialPolicy`<sup>Optional</sup> <a name="initialPolicy" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.initialPolicy"></a>
+##### `initialPolicy`<sup>Optional</sup> <a name="initialPolicy" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.initialPolicy"></a>
 
 ```typescript
 public readonly initialPolicy: PolicyStatement[];
@@ -1379,7 +1379,7 @@ You can call `addToRolePolicy` to the created lambda to add statements post crea
 
 ---
 
-##### `insightsVersion`<sup>Optional</sup> <a name="insightsVersion" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.insightsVersion"></a>
+##### `insightsVersion`<sup>Optional</sup> <a name="insightsVersion" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.insightsVersion"></a>
 
 ```typescript
 public readonly insightsVersion: LambdaInsightsVersion;
@@ -1394,7 +1394,7 @@ Specify the version of CloudWatch Lambda insights to use for monitoring.
 
 ---
 
-##### `layers`<sup>Optional</sup> <a name="layers" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.layers"></a>
+##### `layers`<sup>Optional</sup> <a name="layers" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.layers"></a>
 
 ```typescript
 public readonly layers: ILayerVersion[];
@@ -1411,7 +1411,7 @@ that can be used by multiple functions.
 
 ---
 
-##### `logRetention`<sup>Optional</sup> <a name="logRetention" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetention"></a>
+##### `logRetention`<sup>Optional</sup> <a name="logRetention" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetention"></a>
 
 ```typescript
 public readonly logRetention: RetentionDays;
@@ -1428,7 +1428,7 @@ remove the retention policy, set the value to `INFINITE`.
 
 ---
 
-##### `logRetentionRetryOptions`<sup>Optional</sup> <a name="logRetentionRetryOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetentionRetryOptions"></a>
+##### `logRetentionRetryOptions`<sup>Optional</sup> <a name="logRetentionRetryOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetentionRetryOptions"></a>
 
 ```typescript
 public readonly logRetentionRetryOptions: LogRetentionRetryOptions;
@@ -1443,7 +1443,7 @@ These options control the retry policy when interacting with CloudWatch APIs.
 
 ---
 
-##### `logRetentionRole`<sup>Optional</sup> <a name="logRetentionRole" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.logRetentionRole"></a>
+##### `logRetentionRole`<sup>Optional</sup> <a name="logRetentionRole" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetentionRole"></a>
 
 ```typescript
 public readonly logRetentionRole: IRole;
@@ -1456,7 +1456,7 @@ The IAM role for the Lambda function associated with the custom resource that se
 
 ---
 
-##### `memorySize`<sup>Optional</sup> <a name="memorySize" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.memorySize"></a>
+##### `memorySize`<sup>Optional</sup> <a name="memorySize" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.memorySize"></a>
 
 ```typescript
 public readonly memorySize: number;
@@ -1473,7 +1473,7 @@ Developer Guide.
 
 ---
 
-##### `profiling`<sup>Optional</sup> <a name="profiling" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.profiling"></a>
+##### `profiling`<sup>Optional</sup> <a name="profiling" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.profiling"></a>
 
 ```typescript
 public readonly profiling: boolean;
@@ -1488,7 +1488,7 @@ Enable profiling.
 
 ---
 
-##### `profilingGroup`<sup>Optional</sup> <a name="profilingGroup" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.profilingGroup"></a>
+##### `profilingGroup`<sup>Optional</sup> <a name="profilingGroup" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.profilingGroup"></a>
 
 ```typescript
 public readonly profilingGroup: IProfilingGroup;
@@ -1503,7 +1503,7 @@ Profiling Group.
 
 ---
 
-##### `reservedConcurrentExecutions`<sup>Optional</sup> <a name="reservedConcurrentExecutions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.reservedConcurrentExecutions"></a>
+##### `reservedConcurrentExecutions`<sup>Optional</sup> <a name="reservedConcurrentExecutions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.reservedConcurrentExecutions"></a>
 
 ```typescript
 public readonly reservedConcurrentExecutions: number;
@@ -1518,7 +1518,7 @@ The maximum of concurrent executions you want to reserve for the function.
 
 ---
 
-##### `role`<sup>Optional</sup> <a name="role" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.role"></a>
+##### `role`<sup>Optional</sup> <a name="role" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.role"></a>
 
 ```typescript
 public readonly role: IRole;
@@ -1541,7 +1541,7 @@ The relevant managed policies are "service-role/AWSLambdaBasicExecutionRole" and
 
 ---
 
-##### `securityGroups`<sup>Optional</sup> <a name="securityGroups" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.securityGroups"></a>
+##### `securityGroups`<sup>Optional</sup> <a name="securityGroups" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.securityGroups"></a>
 
 ```typescript
 public readonly securityGroups: ISecurityGroup[];
@@ -1556,7 +1556,7 @@ Only used if 'vpc' is supplied.
 
 ---
 
-##### `timeout`<sup>Optional</sup> <a name="timeout" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.timeout"></a>
+##### `timeout`<sup>Optional</sup> <a name="timeout" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.timeout"></a>
 
 ```typescript
 public readonly timeout: Duration;
@@ -1572,7 +1572,7 @@ based on the function's expected execution time.
 
 ---
 
-##### `tracing`<sup>Optional</sup> <a name="tracing" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.tracing"></a>
+##### `tracing`<sup>Optional</sup> <a name="tracing" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.tracing"></a>
 
 ```typescript
 public readonly tracing: Tracing;
@@ -1585,7 +1585,7 @@ Enable AWS X-Ray Tracing for Lambda Function.
 
 ---
 
-##### `vpc`<sup>Optional</sup> <a name="vpc" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.vpc"></a>
+##### `vpc`<sup>Optional</sup> <a name="vpc" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.vpc"></a>
 
 ```typescript
 public readonly vpc: IVpc;
@@ -1601,7 +1601,7 @@ This is required when `vpcSubnets` is specified.
 
 ---
 
-##### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.vpcSubnets"></a>
+##### `vpcSubnets`<sup>Optional</sup> <a name="vpcSubnets" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.vpcSubnets"></a>
 
 ```typescript
 public readonly vpcSubnets: SubnetSelection;
@@ -1620,45 +1620,102 @@ public subnets is not allowed (unless `allowPublicSubnet` is set to `true`).
 
 ---
 
-##### `authorizerOptions`<sup>Required</sup> <a name="authorizerOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunctionOptions.property.authorizerOptions"></a>
+##### `tokenAuthorizerOptions`<sup>Required</sup> <a name="tokenAuthorizerOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.tokenAuthorizerOptions"></a>
 
 ```typescript
-public readonly authorizerOptions: IAuthorizerOptions;
+public readonly tokenAuthorizerOptions: ITokenAuthorizerOptions;
 ```
 
-- *Type:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions">IAuthorizerOptions</a>
+- *Type:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenAuthorizerOptions">ITokenAuthorizerOptions</a>
 
 ---
 
 
 ## Protocols <a name="Protocols" id="Protocols"></a>
 
-### IAuthorizerOptions <a name="IAuthorizerOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions"></a>
+### ITokenAuthorizerOptions <a name="ITokenAuthorizerOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenAuthorizerOptions"></a>
 
-- *Implemented By:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions">IAuthorizerOptions</a>
+- *Implemented By:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenAuthorizerOptions">ITokenAuthorizerOptions</a>
 
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.jwks">jwks</a></code> | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks">IAuthorizerOptionsJwks</a></code> | *No description.* |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.secret">secret</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.tokenPayloadJsonSchema">tokenPayloadJsonSchema</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenAuthorizerOptions.property.verificationStrategy">verificationStrategy</a></code> | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyArgument">ITokenVerificationStrategyArgument</a> \| <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid">ITokenVerificationStrategyJwksFromUriByKid</a></code> | *No description.* |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenAuthorizerOptions.property.payloadValidationStrategy">payloadValidationStrategy</a></code> | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenValidationStrategyAjvJsonSchemaValidator">ITokenValidationStrategyAjvJsonSchemaValidator</a></code> | *No description.* |
 
 ---
 
-##### `jwks`<sup>Optional</sup> <a name="jwks" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.jwks"></a>
+##### `verificationStrategy`<sup>Required</sup> <a name="verificationStrategy" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenAuthorizerOptions.property.verificationStrategy"></a>
 
 ```typescript
-public readonly jwks: IAuthorizerOptionsJwks;
+public readonly verificationStrategy: ITokenVerificationStrategyArgument | ITokenVerificationStrategyJwksFromUriByKid;
 ```
 
-- *Type:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks">IAuthorizerOptionsJwks</a>
+- *Type:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyArgument">ITokenVerificationStrategyArgument</a> | <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid">ITokenVerificationStrategyJwksFromUriByKid</a>
 
 ---
 
-##### `secret`<sup>Optional</sup> <a name="secret" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.secret"></a>
+##### `payloadValidationStrategy`<sup>Optional</sup> <a name="payloadValidationStrategy" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenAuthorizerOptions.property.payloadValidationStrategy"></a>
+
+```typescript
+public readonly payloadValidationStrategy: ITokenValidationStrategyAjvJsonSchemaValidator;
+```
+
+- *Type:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenValidationStrategyAjvJsonSchemaValidator">ITokenValidationStrategyAjvJsonSchemaValidator</a>
+
+---
+
+### ITokenValidationStrategyAjvJsonSchemaValidator <a name="ITokenValidationStrategyAjvJsonSchemaValidator" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenValidationStrategyAjvJsonSchemaValidator"></a>
+
+- *Implemented By:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenValidationStrategyAjvJsonSchemaValidator">ITokenValidationStrategyAjvJsonSchemaValidator</a>
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenValidationStrategyAjvJsonSchemaValidator.property.schema">schema</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenValidationStrategyAjvJsonSchemaValidator.property.strategyName">strategyName</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenValidationStrategyAjvJsonSchemaValidator.property.schema"></a>
+
+```typescript
+public readonly schema: string;
+```
+
+- *Type:* string
+
+---
+
+##### `strategyName`<sup>Required</sup> <a name="strategyName" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenValidationStrategyAjvJsonSchemaValidator.property.strategyName"></a>
+
+```typescript
+public readonly strategyName: string;
+```
+
+- *Type:* string
+
+---
+
+### ITokenVerificationStrategyArgument <a name="ITokenVerificationStrategyArgument" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyArgument"></a>
+
+- *Implemented By:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyArgument">ITokenVerificationStrategyArgument</a>
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyArgument.property.secret">secret</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyArgument.property.strategyName">strategyName</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `secret`<sup>Required</sup> <a name="secret" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyArgument.property.secret"></a>
 
 ```typescript
 public readonly secret: string;
@@ -1668,31 +1725,32 @@ public readonly secret: string;
 
 ---
 
-##### `tokenPayloadJsonSchema`<sup>Optional</sup> <a name="tokenPayloadJsonSchema" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptions.property.tokenPayloadJsonSchema"></a>
+##### `strategyName`<sup>Required</sup> <a name="strategyName" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyArgument.property.strategyName"></a>
 
 ```typescript
-public readonly tokenPayloadJsonSchema: string;
+public readonly strategyName: string;
 ```
 
 - *Type:* string
 
 ---
 
-### IAuthorizerOptionsJwks <a name="IAuthorizerOptionsJwks" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks"></a>
+### ITokenVerificationStrategyJwksFromUriByKid <a name="ITokenVerificationStrategyJwksFromUriByKid" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid"></a>
 
-- *Implemented By:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks">IAuthorizerOptionsJwks</a>
+- *Implemented By:* <a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid">ITokenVerificationStrategyJwksFromUriByKid</a>
 
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks.property.kid">kid</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks.property.uri">uri</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid.property.kid">kid</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid.property.strategyName">strategyName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid.property.uri">uri</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `kid`<sup>Required</sup> <a name="kid" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks.property.kid"></a>
+##### `kid`<sup>Required</sup> <a name="kid" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid.property.kid"></a>
 
 ```typescript
 public readonly kid: string;
@@ -1702,7 +1760,17 @@ public readonly kid: string;
 
 ---
 
-##### `uri`<sup>Required</sup> <a name="uri" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.IAuthorizerOptionsJwks.property.uri"></a>
+##### `strategyName`<sup>Required</sup> <a name="strategyName" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid.property.strategyName"></a>
+
+```typescript
+public readonly strategyName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `uri`<sup>Required</sup> <a name="uri" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.ITokenVerificationStrategyJwksFromUriByKid.property.uri"></a>
 
 ```typescript
 public readonly uri: string;
