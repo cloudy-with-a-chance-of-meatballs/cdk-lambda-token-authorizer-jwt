@@ -1,5 +1,5 @@
 
-const { awscdk, typescript } = require('projen');
+import { awscdk, typescript, javascript } = from 'projen';
 
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'cfuerst',
@@ -8,6 +8,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt',
   repositoryUrl: 'https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.git',
+  description: "Add a lambda function to your aws-rest-api-gateway which can be used as a token authorizer",
   stability: 'experimental',
   license: 'MIT',
   keywords: ['aws', 'cdk', 'lambda', 'apigateway', 'rest', 'api', 'jwt', 'tokenauthorizer', 'jwks'],
@@ -15,6 +16,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'aws-cdk-lib',
     'constructs',
   ],
+  projenrcTs: true,
+  npmAccess: javascript.NpmAccess.PUBLIC,
   autoApproveUpgrades: true,
   autoApproveOptions: {
     allowedUsernames: ['dependabot[bot]'],
