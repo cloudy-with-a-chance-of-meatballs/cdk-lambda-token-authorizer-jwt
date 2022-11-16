@@ -1,7 +1,7 @@
 import { App, Stack } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import { TokenAuthorizerJwtFunction } from '../src/index';
+import { TokenAuthorizerJwtFunction } from '../src';
 
 describe('Token authorizer infrastructure', function () {
 
