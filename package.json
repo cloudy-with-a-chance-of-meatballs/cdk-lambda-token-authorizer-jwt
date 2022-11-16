@@ -1,5 +1,6 @@
 {
   "name": "@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt",
+  "description": "Add a lambda function to your aws-rest-api-gateway which can be used as a token authorizer",
   "repository": {
     "type": "git",
     "url": "https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.git"
@@ -27,6 +28,7 @@
     "unbump": "npx projen unbump",
     "watch": "npx projen watch",
     "projen": "npx projen",
+    "force-rebuild": "git clean -f -d -x && find . -type f -exec grep -l \"Generated\" {} ; -exec rm -f {} ;",
     "cdk": "cdk"
   },
   "author": {
@@ -47,13 +49,13 @@
     "jest-junit": "^13",
     "jsii": "^1.71.0",
     "jsii-diff": "^1.71.0",
-    "jsii-docgen": "^7.0.149",
+    "jsii-docgen": "^7.0.151",
     "jsii-pacmak": "^1.71.0",
     "json-schema": "^0.4.0",
-    "projen": "^0.65.23",
+    "projen": "^0.65.25",
     "standard-version": "^9",
     "ts-jest": "^27",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.5.0",
@@ -61,17 +63,19 @@
   },
   "dependencies": {
     "aws-cdk-lib": "^2.50.0",
-    "constructs": "^10.1.160"
+    "constructs": "^10.1.161"
   },
   "keywords": [
     "api",
     "apigateway",
+    "authorizer",
     "aws",
     "cdk",
     "jwks",
     "jwt",
     "lambda",
     "rest",
+    "token",
     "tokenauthorizer"
   ],
   "engines": {
@@ -79,6 +83,9 @@
   },
   "main": "lib/index.js",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.0",
   "jest": {
     "testMatch": [
