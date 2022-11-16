@@ -45,6 +45,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
 });
 
+projen.setScript('delete-genereated', 'git clean -f -d -x && find . -type f -exec grep -l "Generated" {} \; -exec rm -f {} \;');
+
 project.setScript('cdk', 'cdk');
 
 project.synth();
