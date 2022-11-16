@@ -10,7 +10,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   description: 'Add a lambda function to your aws-rest-api-gateway which can be used as a token authorizer',
   stability: 'experimental',
   license: 'MIT',
-  keywords: ['aws', 'cdk', 'lambda', 'apigateway', 'rest', 'api', 'jwt', 'tokenauthorizer', 'jwks'],
+  keywords: ['aws', 'cdk', 'lambda', 'apigateway', 'rest', 'api', 'jwt', 'tokenauthorizer', 'jwks', 'authorizer', 'token'],
   deps: [
     'aws-cdk-lib',
     'constructs',

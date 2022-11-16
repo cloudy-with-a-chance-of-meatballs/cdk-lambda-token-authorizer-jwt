@@ -28,7 +28,7 @@
     "unbump": "npx projen unbump",
     "watch": "npx projen watch",
     "projen": "npx projen",
-    "delete-genereated": "git clean -f -d -x && find . -type f -exec grep -l \"Generated\" {} ; -exec rm -f {} ;",
+    "force-rebuild": "git clean -f -d -x && find . -type f -exec grep -l \"Generated\" {} ; -exec rm -f {} ;",
     "cdk": "cdk"
   },
   "author": {
@@ -68,12 +68,14 @@
   "keywords": [
     "api",
     "apigateway",
+    "authorizer",
     "aws",
     "cdk",
     "jwks",
     "jwt",
     "lambda",
     "rest",
+    "token",
     "tokenauthorizer"
   ],
   "engines": {
