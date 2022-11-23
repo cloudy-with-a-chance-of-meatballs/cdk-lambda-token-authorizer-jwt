@@ -68,7 +68,7 @@ export class HelloworldStack extends cdk.Stack {
 ```typescript
 const myValidation = { properties:{ iss: { enum: ['my_trusted_iss'] } }};
 
-new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: { 
+new TokenAuthorizerJwtFunction(stack, 'example-stack', { tokenAuthorizerOptions: { 
   tokenPayloadJsonSchema: JSON.stringify(myValidation)
 }});
 ```
@@ -76,7 +76,7 @@ new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: {
 - **Using JWKS**
 
 ```typescript
-new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: { 
+new TokenAuthorizerJwtFunction(stack, 'example-stack', { tokenAuthorizerOptions: { 
   jwks: { 
     uri: 'https://example.auth0.com/.well-known/jwks.json'; 
     kid: 'REEyM0FBMDhFQkQ5QjY4Q0YzRjVGNzQ5OTU3RjUzN0FEREFFNzJGMg' 
@@ -89,7 +89,7 @@ new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: {
 ```typescript
 const myPublicKeyOneliner = '-----BEGIN PUBLIC KEY---\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKuTfz7kpJHPrmcmgx4Xf4GMoM2kK4mh\nMpSOW3qu1zZA1wfMHV8PS0Kds0nXMB6mmHk/Ke1\Et68aEspQRIn1aLcCAwEAAQ==\n-----END PUBLIC KEY-----';
 
-new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: { 
+new TokenAuthorizerJwtFunction(stack, 'example-stack', { tokenAuthorizerOptions: { 
   secret: myPublicKeyOneliner
 }});
 ``` 
