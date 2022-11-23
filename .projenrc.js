@@ -44,6 +44,13 @@ const project = new awscdk.AwsCdkConstructLibrary({
   gitignore: ['.idea/'],
 });
 
+new awscdk.LambdaFunction(project, {
+  entrypoint: "function/src/index.ts",
+  constructFile: "src/index.ts",
+  constructName: "TokenAuthorizerJwtFunction",
+  cdkDeps: project.cdkDeps,
+});
+
 project.setScript('force-rebuild', 'git clean -f -d -x && find . -type f -exec grep -l "Generated" {} \\; -exec rm -f {} \\;');
 
 project.setScript('cdk', 'cdk');
