@@ -109,7 +109,6 @@ describe('Token authorizer infrastructure', function () {
         },
       },
     });
-
   });
 
 });

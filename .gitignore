@@ -32,6 +32,7 @@ jspm_packages/
 .yarn-integrity
 .cache
 .idea/
+function/src/authorizer-function.ts
 !/.projenrc.js
 /test-reports/
 junit.xml

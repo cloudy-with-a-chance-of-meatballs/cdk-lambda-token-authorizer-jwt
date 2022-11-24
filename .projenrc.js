@@ -41,7 +41,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   jestOptions: {
     extraCliOptions: ['--testMatch "**/*.test.ts"'],
   },
-  gitignore: ['.idea/'],
+  gitignore: ['.idea/', 'function/src/authorizer-function.ts'],
   npmignore: ['/function/', '!/assets/function/'],
 });
 
@@ -51,6 +51,7 @@ new awscdk.LambdaFunction(project, {
   entrypoint: 'function/src/authorizer.lambda.ts',
   constructName: 'AuthorizerFunction',
   cdkDeps: project.cdkDeps,
+  runtime: awscdk.LambdaRuntime.NODEJS_16_X,
 });
 
 project.synth();

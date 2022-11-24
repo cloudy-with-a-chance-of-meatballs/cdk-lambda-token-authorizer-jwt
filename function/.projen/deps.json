@@ -79,10 +79,6 @@
       "type": "build"
     },
     {
-      "name": "@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt",
-      "type": "runtime"
-    },
-    {
       "name": "@types/aws-lambda",
       "type": "runtime"
     },
