@@ -297,6 +297,17 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt/-/aws-apigateway-rest-token-authorizer-jwt-0.0.0.tgz#f7edcfd986c25ef17f2f3da12580396bf8f3de27"
+  integrity sha512-0e9Z8F6bj4D81hWulnq5iWqf3XGQ4zEHcoQftSrHFg44pgQeEba+wN1LFlrYYNVSu9z/rA+UHz/Bdu9IWzdNxA==
+  dependencies:
+    "@types/aws-lambda" "^8.10.108"
+    "@types/jsonwebtoken" "^8.5.9"
+    ajv "^8.11.2"
+    jsonwebtoken "^8.5.1"
+    jwks-rsa "^3.0.0"
+
 "@eslint/eslintrc@^1.3.3":
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.3.3.tgz#2b044ab39fdfa75b4688184f9e573ce3c5b0ff95"
@@ -771,7 +782,7 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
   integrity sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==
 
-"@types/aws-lambda@^8.10.109":
+"@types/aws-lambda@^8.10.108", "@types/aws-lambda@^8.10.109":
   version "8.10.109"
   resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.109.tgz#2f434cbfafe083529e365fe9c114787827a169a8"
   integrity sha512-/ME92FneNyXQzrAfcnQQlW1XkCZGPDlpi2ao1MJwecN+6SbeonKeggU8eybv1DfKli90FAVT1MlIZVXfwVuCyg==

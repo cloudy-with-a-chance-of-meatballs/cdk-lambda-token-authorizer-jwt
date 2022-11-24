@@ -79,23 +79,11 @@
       "type": "build"
     },
     {
+      "name": "@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt",
+      "type": "runtime"
+    },
+    {
       "name": "@types/aws-lambda",
-      "type": "runtime"
-    },
-    {
-      "name": "@types/jsonwebtoken",
-      "type": "runtime"
-    },
-    {
-      "name": "ajv",
-      "type": "runtime"
-    },
-    {
-      "name": "jsonwebtoken",
-      "type": "runtime"
-    },
-    {
-      "name": "jwks-rsa",
       "type": "runtime"
     }
   ],

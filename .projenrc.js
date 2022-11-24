@@ -41,7 +41,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   jestOptions: {
     extraCliOptions: ['--testMatch "**/*.test.ts"'],
   },
-  gitignore: ['.idea/', 'function/src/authorizer-function.ts'],
+  gitignore: ['.idea/'],
   npmignore: ['/function/', '!/assets/function/'],
 });
 
@@ -68,16 +68,14 @@ const fn = new typescript.TypeScriptProject({
   defaultReleaseBranch: 'main',
   deps: [
     '@types/aws-lambda',
-    'jsonwebtoken',
-    '@types/jsonwebtoken',
-    'jwks-rsa',
-    'ajv',
+    '@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt',
   ],
   eslint: true,
   prettier: true,
   prettierOptions: {
     settings: { printWidth: 120 },
   },
+  gitignore: ['src/authorizer-function.ts'],
 });
 
 fn.synth();
