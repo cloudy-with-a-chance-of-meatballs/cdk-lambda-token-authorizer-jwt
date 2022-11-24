@@ -41,12 +41,18 @@ const project = new awscdk.AwsCdkConstructLibrary({
   jestOptions: {
     extraCliOptions: ['--testMatch "**/*.test.ts"'],
   },
-  gitignore: ['.idea/'],
+  gitignore: ['.idea/', 'function/src/authorizer-function.ts'],
+  npmignore: ['/function/', '!/assets/function/'],
 });
 
-project.setScript('force-rebuild', 'git clean -f -d -x && find . -type f -exec grep -l "Generated" {} \\; -exec rm -f {} \\;');
-
 project.setScript('cdk', 'cdk');
+
+new awscdk.LambdaFunction(project, {
+  entrypoint: 'function/src/authorizer.lambda.ts',
+  constructName: 'AuthorizerFunction',
+  cdkDeps: project.cdkDeps,
+  runtime: awscdk.LambdaRuntime.NODEJS_16_X,
+});
 
 project.synth();
 

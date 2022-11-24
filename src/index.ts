@@ -1,3 +1,4 @@
+import * as path from 'path';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
@@ -59,7 +60,7 @@ export class TokenAuthorizerJwtFunction extends lambda.Function {
     super(scope, id, {
       ...props,
       handler: 'index.lambdaHandler',
-      code: lambda.Code.fromAsset('function'),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../assets/function/src/authorizer.lambda')),
       runtime: lambda.Runtime.NODEJS_16_X,
       environment: {
         ...(props.environment || {}),

@@ -41,6 +41,33 @@
       ],
       "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
     },
+    "bundle": {
+      "name": "bundle",
+      "description": "Prepare assets",
+      "steps": [
+        {
+          "spawn": "bundle:function/src/authorizer.lambda"
+        }
+      ]
+    },
+    "bundle:function/src/authorizer.lambda": {
+      "name": "bundle:function/src/authorizer.lambda",
+      "description": "Create a JavaScript bundle from function/src/authorizer.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle function/src/authorizer.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/function/src/authorizer.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+        }
+      ]
+    },
+    "bundle:function/src/authorizer.lambda:watch": {
+      "name": "bundle:function/src/authorizer.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from function/src/authorizer.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle function/src/authorizer.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/function/src/authorizer.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+        }
+      ]
+    },
     "clobber": {
       "name": "clobber",
       "description": "hard resets to HEAD of origin and cleans the local repo",
@@ -192,7 +219,12 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation"
+      "description": "Prepare the project for compilation",
+      "steps": [
+        {
+          "spawn": "bundle"
+        }
+      ]
     },
     "release": {
       "name": "release",
@@ -223,7 +255,8 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --testMatch \"**/*.test.ts\" --coverageProvider=v8 --updateSnapshot"
+          "exec": "jest --passWithNoTests --testMatch \"**/*.test.ts\" --coverageProvider=v8 --updateSnapshot",
+          "receiveArgs": true
         },
         {
           "spawn": "eslint"

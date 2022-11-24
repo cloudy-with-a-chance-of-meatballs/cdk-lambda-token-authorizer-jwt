@@ -771,10 +771,10 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
   integrity sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==
 
-"@types/aws-lambda@^8.10.108":
-  version "8.10.108"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.108.tgz#ddadf0d9182f2f5e689ce5fc05b5f711fad6d115"
-  integrity sha512-1yh1W1WoqK3lGHy+V/Fi55zobxrDHUUsluCWdMlOXkCvtsCmHPXOG+CQ2STIL4B1g6xi6I6XzxaF8V9+zeIFLA==
+"@types/aws-lambda@^8.10.109":
+  version "8.10.109"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.109.tgz#2f434cbfafe083529e365fe9c114787827a169a8"
+  integrity sha512-/ME92FneNyXQzrAfcnQQlW1XkCZGPDlpi2ao1MJwecN+6SbeonKeggU8eybv1DfKli90FAVT1MlIZVXfwVuCyg==
 
 "@types/babel__core@^7.1.14":
   version "7.1.20"
@@ -4135,10 +4135,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
-  integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
+prettier@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.0.tgz#c7df58393c9ba77d6fba3921ae01faf994fb9dc9"
+  integrity sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==
 
 pretty-format@^29.0.0, pretty-format@^29.3.1:
   version "29.3.1"
@@ -4159,10 +4159,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.65.25:
-  version "0.65.25"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.65.25.tgz#eedca3255ddda1f35f07bf10e61ba3dcbfe646e2"
-  integrity sha512-i2hgNpvntLyX80awrgili6zherTCDXtDTcK8ctpcIU9/uMEWeBEaPxBpyP8znyfNAiDuC+16edtL12GrA1rqQA==
+projen@^0.65.34:
+  version "0.65.34"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.65.34.tgz#3999bf4b20420d20ae469c125c00044facbf52ad"
+  integrity sha512-nQKiFCf4W6mx5I5iRBsRruB+5CmC1P4iQr9xbqyggT5y0XC+X4XMmmxzF96P7XeailiQQdaV7tCzLsrLFyOnIw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"

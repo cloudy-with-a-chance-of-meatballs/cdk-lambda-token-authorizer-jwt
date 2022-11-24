@@ -1,4 +1,4 @@
-import { lambdaHandler } from '../src';
+import { lambdaHandler } from '../src/authorizer.lambda';
 
 const symmetricSecret = 'secVal42';
 const jwksUri = 'https://example.auth0.com/.well-known/jwks.json';
@@ -100,9 +100,9 @@ describe('Token authorizer returns policyDocument', function () {
       },
     );
   });
-  
+
   it('verifies that a token wich which can be verfified against a asymmetric secret returns allowed', async () => {
-    
+
     const pubKey = "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu1SU1LfVLPHCozMxH2Mo\n4lgOEePzNm0tRgeLezV6ffAt0gunVTLw7onLRnrq0/IzW7yWR7QkrmBL7jTKEn5u\n+qKhbwKfBstIs+bMY2Zkp18gnTxKLxoS2tFczGkPLPgizskuemMghRniWaoLcyeh\nkd3qqGElvW/VDL5AaWTg0nLVkjRo9z+40RQzuVaE8AkAFmxZzow3x+VJYKdjykkJ\n0iT9wCS0DRTXu269V264Vf/3jvredZiKRkgwlL9xNAwxXFg0x/XFw005UWVRIkdg\ncKWTjpBP2dPwVZ4WWC+9aGVd+Gyn1o0CLelf4rEjGoXbAAEgAqeGUxrcIlbjXfbc\nmwIDAQAB\n-----END PUBLIC KEY-----";
     const token  = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIifQ.pIqXt4HVhvjNS-6mPEz9mR7pr8V-w1u-x1jMN7Tie-eqLUEcYA6I-3SeSHfCfEDhM4ssp7wpPZ4CoFJV3m_hQR-sugBbZ6CvSNlGT7U2DXBvmTyHSU-eckM7y4fxWGsa8-PIm1MZHKvIUCD5vYcXKgt0mz_57OOXikcT-sgbUDYB0HU0Gii_klO7QNUV7Wykyu1HK6wg9nQJXJ8rzFhPMGR3Nqo-D9UIhayl714Tm-ZqdAWRD1YMsK6zJz5ajQu1_NZ11j4ACAVF2BuzSSfT2Cuw1zMcE_7xce1nSt1sHho__SBobsUPvO_Izp12ppz--zcAC6dPS1_4W8GxuiodEQ";
     process.env.TOKEN_AUTHORIZER_JWT_VERIFICATION_SECRET = pubKey;
@@ -110,9 +110,9 @@ describe('Token authorizer returns policyDocument', function () {
     const response = await lambdaHandler(eventPayload(token));
     expect(response.policyDocument.Statement[0].Effect).toEqual('Allow');
   });
-  
+
   it('verifies that a token wich cannot be verfified against a asymmetric secret returns deny', async () => {
-    
+
     const pubKey = "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxd4246S8mTuCixdgf3YN\nzuZkD+ZEYCv1DQczhjdE48eeN8HUCZ9iDVdf9+IpBUR2mlYJ2x4FbvJ/QxDQXIF+\nz8mWvYMWrHM985RABeK7U6VjvWjCnAhF8T5v7w2yJHOOsrzPWXccr1M08n+Uf8xr\nB4kpLSlaP29MnouBtsYH8Oo4YSmZFKWmv3sy4VVzTO8PimgZXav6kdyeU+sC5WB1\ndPbhwKHPOUIAZ7dwqpRKSdpIz+rLNMtmKHQ0zT9bRu8Thc/8YI9dldJ9jNEQazcB\nfAnKo1d1cZFZya22M7iqzItJv+DnfFtIQVGnHX3rWbeKuuCOkG0Ne8VFx0dA/H69\nLwIDAQAB\n-----END PUBLIC KEY-----";
     const token  = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIifQ.pIqXt4HVhvjNS-6mPEz9mR7pr8V-w1u-x1jMN7Tie-eqLUEcYA6I-3SeSHfCfEDhM4ssp7wpPZ4CoFJV3m_hQR-sugBbZ6CvSNlGT7U2DXBvmTyHSU-eckM7y4fxWGsa8-PIm1MZHKvIUCD5vYcXKgt0mz_57OOXikcT-sgbUDYB0HU0Gii_klO7QNUV7Wykyu1HK6wg9nQJXJ8rzFhPMGR3Nqo-D9UIhayl714Tm-ZqdAWRD1YMsK6zJz5ajQu1_NZ11j4ACAVF2BuzSSfT2Cuw1zMcE_7xce1nSt1sHho__SBobsUPvO_Izp12ppz--zcAC6dPS1_4W8GxuiodEQ";
     process.env.TOKEN_AUTHORIZER_JWT_VERIFICATION_SECRET = pubKey;
@@ -120,7 +120,7 @@ describe('Token authorizer returns policyDocument', function () {
     const response = await lambdaHandler(eventPayload(token));
     expect(response.policyDocument.Statement[0].Effect).toEqual('Deny');
   });
-  
+
 
   it('verifies allow policy and context data on valid token with asymetric key set', async () => {
 
