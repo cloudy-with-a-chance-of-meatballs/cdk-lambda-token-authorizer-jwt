@@ -1,57 +1,53 @@
-import { AuthResponse, CustomAuthorizerEvent, PolicyDocument } from "aws-lambda";
-import jwt, { Secret } from "jsonwebtoken";
+import {
+  AwsApigatewayRestTokenAuthorizerJwt,
+  ITokenAuthorizerOptions,
+} from "@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt";
 
-import { PolicyStatementEffect, authorizerPolicyDocument, FnErrorConstants, FnEnvVars } from "./const";
+export { ITokenAuthorizerOptions } from "@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt";
 
-import { getPublicKeyFromJwksUri } from "./jwks";
-import { validateJwtPayloadAgainstJsonSchema } from "./validator";
+import { AuthResponse, APIGatewayTokenAuthorizerEvent } from "aws-lambda";
+
+const authorizer = new AwsApigatewayRestTokenAuthorizerJwt();
+
+enum FnEnvVars {
+  JwksUri = "TOKEN_AUTHORIZER_JWKS_URI",
+  JwksKid = "TOKEN_AUTHORIZER_JWKS_KID",
+  Secret = "TOKEN_AUTHORIZER_JWT_VERIFICATION_SECRET",
+  Schema = "TOKEN_AUTHORIZER_JWT_VALIDATOR_SCHEMA_JSON",
+}
+
+enum FnErrorConstants {
+  JwksKid = "MISSING_JWKS_KID",
+  ConfigEnv = "MISSING_PROCESS_ENV_VARIABLES",
+}
 
 // handle event
-export const lambdaHandler = async (event: CustomAuthorizerEvent): Promise<AuthResponse> => {
-
-  // no jwt was provided in the event payload
-  if (!event.authorizationToken) throw new Error(FnErrorConstants.EventToken);
-
+export const authHandler = async (event: APIGatewayTokenAuthorizerEvent): Promise<AuthResponse> => {
   const envSecret = process.env[FnEnvVars.Secret] || "";
   const jwksUri = process.env[FnEnvVars.JwksUri] || "";
   const jwksKid = process.env[FnEnvVars.JwksKid] || "";
+  const validation = process.env[FnEnvVars.Schema] || "";
 
   if (!envSecret && !jwksUri) throw new Error(FnErrorConstants.ConfigEnv);
   if (jwksUri && !jwksKid) throw new Error(FnErrorConstants.JwksKid);
 
-  // everything could be successsfully obtained
-  const TOKEN: string = event.authorizationToken;
-  const SECRET: Secret = envSecret ? envSecret : await getPublicKeyFromJwksUri(jwksUri, jwksKid);
+  let options: ITokenAuthorizerOptions = {
+    verificationStrategy: {
+      strategyName: "argument",
+      secret: envSecret || "foobar",
+    },
+    ...(validation ? { payloadValidationStrategy: { strategyName: "schema", schema: validation } } : {}),
+  };
 
-  try {
-    //decode an validate the token
-    let decodedJwt: any = jwt.verify(TOKEN, SECRET) as any;
-
-    //validate against schema if provided
-    const schema = process.env.TOKEN_AUTHORIZER_JWT_VALIDATOR_SCHEMA_JSON || false;
-    if (schema) decodedJwt = validateJwtPayloadAgainstJsonSchema(decodedJwt, schema) as any;
-
-    // valid  grant access
-    return authResponseAllow(decodedJwt);
-  } catch (e) {
-    // deny access
-    return authResponseError((e as Error).name.toUpperCase(), (e as Error).message);
+  if (jwksUri && jwksKid) {
+    return authorizer.getAuthResponse(event, {
+      ...options,
+      verificationStrategy: {
+        strategyName: "jwksFromUriByKid",
+        uri: jwksUri,
+        kid: jwksKid,
+      },
+    });
   }
-};
-
-// response helpers
-const authResponse = (policyDocument: PolicyDocument, context: any): AuthResponse => {
-  return { principalId: "user", context: context, policyDocument: policyDocument } as AuthResponse;
-};
-
-// deny
-const authResponseError = (type: string, message: string): AuthResponse => {
-  const policy = authorizerPolicyDocument(PolicyStatementEffect.DENY) as PolicyDocument;
-  return authResponse(policy, { error: true, errorType: type, errorMessage: message });
-};
-
-// allow
-const authResponseAllow = (context: any): AuthResponse => {
-  const policy = authorizerPolicyDocument(PolicyStatementEffect.ALLOW) as PolicyDocument;
-  return authResponse(policy, { error: false, ...context });
+  return authorizer.getAuthResponse(event, options);
 };

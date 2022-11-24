@@ -3,6 +3,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
 // note: unfortunately C# jsii compilation does not allow a common interface with strategyName neither a union type
+// @todo how to deduplicate this?
 
 export interface ITokenValidationStrategyAjvJsonSchemaValidator {
   readonly strategyName: 'schema';
@@ -59,7 +60,7 @@ export class TokenAuthorizerJwtFunction extends lambda.Function {
 
     super(scope, id, {
       ...props,
-      handler: 'index.lambdaHandler',
+      handler: 'index.authHandler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../assets/function/src/authorizer.lambda')),
       runtime: lambda.Runtime.NODEJS_16_X,
       environment: {
