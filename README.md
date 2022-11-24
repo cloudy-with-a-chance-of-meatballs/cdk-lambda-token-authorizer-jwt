@@ -20,7 +20,6 @@ Add a lambda function to your project which can be used as a apigateway token au
 
 ```shell
 npm install @cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt
-yarn add @cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt
 ```
 
 ### Python
@@ -31,18 +30,20 @@ pip install cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt
 
 ## Usage
 
+### Notes 
 - **JWT Token handling**: The token verfification is done via [https://github.com/auth0/node-jsonwebtoken](https://github.com/auth0/node-jsonwebtoken), the jwks fetcher is using [https://github.com/auth0/node-jwks-rsa](https://github.com/auth0/node-jwks-rsa). The implementation per default verifies the token and if given the expiration.
 
 - **JWT Payload:** Any verification of the token payload must be done over injecting a json schema for validation using [https://ajv.js.org/json-type-definition.html](https://ajv.js.org/json-type-definition.html).
 
 - **Protocols:** [main/API.md#iauthorizeroptions](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/blob/main/API.md#iauthorizeroptions-)
 
-- **Example usage with Rest Apigateway**
+### Example usage with Rest Apigateway
 
 ```typescript
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
 
 import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
 
@@ -51,59 +52,120 @@ export class HelloworldStack extends cdk.Stack {
     super(scope, id, props); 
 
     const api               = new apigateway.RestApi(this, 'ApiName', {});
-    const tokenAuthFunction = new TokenAuthorizerJwtFunction(this, 'fnName', {...});
+    const tokenAuthFunction = new TokenAuthorizerJwtFunction(this, 'fnName', {
+      tokenAuthorizerOptions: {
+        verificationStrategy: {
+          strategyName: 'argument',
+          secret: 'mySecret-symmetric-or-asymmetric',
+        },
+      },
+    });
+    
     const tokenAuthorizer   = new apigateway.TokenAuthorizer(this, 'fnNameApiGwAuthorizer', { 
       handler: tokenAuthFunction // use the TokenAuthorizerJwtFunction
     });
+
+    const dummyFn = new lambda.Function(this, 'helloWorldFunction', {
+      handler: 'index.handler',
+      code: lambda.Code.fromInline(`exports.handler = async (event) => { console.log('event: ', event); return '{"statusCode": 200, "message": "DummyLambdaFunction"}' };`),
+      runtime: lambda.Runtime.NODEJS_16_X,
+    });
+
+    const dummyLambdaIntegration = new apigateway.LambdaIntegration(
+      dummyFn, { passthroughBehavior: apigateway.PassthroughBehavior.WHEN_NO_MATCH }
+    );
     
-    const someMethod = api.someresource.addMethod("GET", some_target_integration, { 
+    const someMethod = api.root.addMethod("GET", dummyLambdaIntegration, { 
       authorizer: tokenAuthorizer 
     });   
   }
 }
 ```
 
-- **Validation**
+### Validation
 
 ```typescript
+import * as cdk from 'aws-cdk-lib';
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
+
+const app   = new cdk.App();
+const stack = new cdk.Stack(app, 'MyStack');
+
 const myValidation = { properties:{ iss: { enum: ['my_trusted_iss'] } }};
 
-new TokenAuthorizerJwtFunction(stack, 'example-stack', { tokenAuthorizerOptions: { 
-  tokenPayloadJsonSchema: JSON.stringify(myValidation)
-}});
-```
-
-- **Using JWKS**
-
-```typescript
-new TokenAuthorizerJwtFunction(stack, 'example-stack', { tokenAuthorizerOptions: { 
-  jwks: { 
-    uri: 'https://example.auth0.com/.well-known/jwks.json'; 
-    kid: 'REEyM0FBMDhFQkQ5QjY4Q0YzRjVGNzQ5OTU3RjUzN0FEREFFNzJGMg' 
+new TokenAuthorizerJwtFunction(stack, 'example-stack', {
+  tokenAuthorizerOptions: {
+    payloadValidationStrategy: {
+      strategyName: 'schema',
+      schema: JSON.stringify(myValidation)
+    },
+    verificationStrategy: { strategyName: 'argument',  secret: 'someSecret' }
   }
-}});
+});
 ```
 
-- **Using asymmetric algorithms, e.g. public key**
+### Using JWKS
 
 ```typescript
+import * as cdk from 'aws-cdk-lib';
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
+
+const app   = new cdk.App();
+const stack = new cdk.Stack(app, 'MyStack');
+
+new TokenAuthorizerJwtFunction(stack, 'example-stack', {
+  tokenAuthorizerOptions: {
+    verificationStrategy: {
+      strategyName: 'jwksFromUriByKid',
+      uri: 'uri',
+      kid: 'kid',
+    }
+  }
+});
+```
+
+### Using asymmetric algorithms, e.g. public key
+
+```typescript
+import * as cdk from 'aws-cdk-lib';
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
+
+const app   = new cdk.App();
+const stack = new cdk.Stack(app, 'MyStack');
+
 const myPublicKeyOneliner = '-----BEGIN PUBLIC KEY---\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKuTfz7kpJHPrmcmgx4Xf4GMoM2kK4mh\nMpSOW3qu1zZA1wfMHV8PS0Kds0nXMB6mmHk/Ke1\Et68aEspQRIn1aLcCAwEAAQ==\n-----END PUBLIC KEY-----';
 
-new TokenAuthorizerJwtFunction(stack, 'example-stack', { tokenAuthorizerOptions: { 
-  secret: myPublicKeyOneliner
-}});
+new TokenAuthorizerJwtFunction(stack, 'example-stack', {
+  tokenAuthorizerOptions: {
+    verificationStrategy: {
+      strategyName: 'argument',
+      secret: myPublicKeyOneliner 
+    }
+  }
+});
 ``` 
 
-- **Using symmetric algorithms, same key for sign and verify :warning:**
+### Using symmetric algorithms, same key for sign and verify :warning:
 
-<small>**Attention:** the key might be exposed during deploy, in the runtime etc.<small>
+<small>**Attention:** the key might be exposed during deploy, in the runtime etc.</small>
 
 ```typescript
+import * as cdk from 'aws-cdk-lib';
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
+
+const app   = new cdk.App();
+const stack = new cdk.Stack(app, 'MyStack');
+
 const mySymmetricSecret = 'sharedSecret';
 
-new TokenAuthorizerJwtFunction(stack, 'example-stack', { authorizerOptions: { 
-  secret: mySymmetricSecret
-}});
+new TokenAuthorizerJwtFunction(stack, 'example-stack', {
+  tokenAuthorizerOptions: {
+    verificationStrategy: {
+      strategyName: 'argument',
+      secret: mySymmetricSecret
+    }
+  }
+});
 ```
 
 🍻
