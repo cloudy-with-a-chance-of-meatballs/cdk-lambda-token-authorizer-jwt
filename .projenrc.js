@@ -16,6 +16,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'constructs',
   ],
   npmAccess: javascript.NpmAccess.PUBLIC,
+  autoMerge: true,
   autoApproveUpgrades: true,
   autoApproveOptions: {
     allowedUsernames: ['dependabot[bot]'],
