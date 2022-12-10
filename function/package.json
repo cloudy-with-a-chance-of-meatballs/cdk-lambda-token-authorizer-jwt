@@ -43,7 +43,7 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt": "^0.0.0",
+    "@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt": "^0.1.1",
     "@types/aws-lambda": "^8.10.109"
   },
   "main": "lib/index.js",

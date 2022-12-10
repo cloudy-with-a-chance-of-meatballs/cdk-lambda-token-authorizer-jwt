@@ -80,6 +80,7 @@
     },
     {
       "name": "@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt",
+      "version": "^0.1.1",
       "type": "runtime"
     },
     {

@@ -297,14 +297,16 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt@^0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt/-/aws-apigateway-rest-token-authorizer-jwt-0.0.0.tgz#f7edcfd986c25ef17f2f3da12580396bf8f3de27"
-  integrity sha512-0e9Z8F6bj4D81hWulnq5iWqf3XGQ4zEHcoQftSrHFg44pgQeEba+wN1LFlrYYNVSu9z/rA+UHz/Bdu9IWzdNxA==
+"@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt/-/aws-apigateway-rest-token-authorizer-jwt-0.1.1.tgz#9852099222a296cc4095d2a580a7060ed0a84d3c"
+  integrity sha512-dHT9PrfS3Gmv3ns7Tl4Pp45xFpWzocvp09FbnWK4RhDZZnVb3In6K0vr0e6QVE/bo6G5ABOxtXrKCJczuCin+w==
   dependencies:
     "@types/aws-lambda" "^8.10.108"
+    "@types/flat" "^5.0.2"
     "@types/jsonwebtoken" "^8.5.9"
     ajv "^8.11.2"
+    flat "^5.0.2"
     jsonwebtoken "^8.5.1"
     jwks-rsa "^3.0.0"
 
@@ -853,6 +855,11 @@
     "@types/express-serve-static-core" "^4.17.18"
     "@types/qs" "*"
     "@types/serve-static" "*"
+
+"@types/flat@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@types/flat/-/flat-5.0.2.tgz#642a51a037d1f52fda082312b0e4566dc09a9f8f"
+  integrity sha512-3zsplnP2djeps5P9OyarTxwRpMLoe5Ash8aL9iprw0JxB+FAHjY+ifn4yZUuW4/9hqtnmor6uvjSRzJhiVbrEQ==
 
 "@types/graceful-fs@^4.1.3":
   version "4.1.5"
@@ -2203,6 +2210,11 @@ flat-cache@^3.0.4:
   dependencies:
     flatted "^3.1.0"
     rimraf "^3.0.2"
+
+flat@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/flat/-/flat-5.0.2.tgz#8ca6fe332069ffa9d324c327198c598259ceb241"
+  integrity sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==
 
 flatted@^3.1.0:
   version "3.2.7"
