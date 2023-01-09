@@ -1055,6 +1055,7 @@ const tokenAuthorizerFunctionOptions: TokenAuthorizerFunctionOptions = { ... }
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.onFailure">onFailure</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for failed invocations. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.onSuccess">onSuccess</a></code> | <code>aws-cdk-lib.aws_lambda.IDestination</code> | The destination for successful invocations. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.retryAttempts">retryAttempts</a></code> | <code>number</code> | The maximum number of times to retry when the function returns an error. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.adotInstrumentation">adotInstrumentation</a></code> | <code>aws-cdk-lib.aws_lambda.AdotInstrumentationConfig</code> | Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.allowAllOutbound">allowAllOutbound</a></code> | <code>boolean</code> | Whether to allow the Lambda to send all network traffic. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.allowPublicSubnet">allowPublicSubnet</a></code> | <code>boolean</code> | Lambda Functions in a public subnet can NOT access the internet. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.architecture">architecture</a></code> | <code>aws-cdk-lib.aws_lambda.Architecture</code> | The system architectures compatible with this lambda function. |
@@ -1145,6 +1146,21 @@ The maximum number of times to retry when the function returns an error.
 
 Minimum: 0
 Maximum: 2
+
+---
+
+##### `adotInstrumentation`<sup>Optional</sup> <a name="adotInstrumentation" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.adotInstrumentation"></a>
+
+```typescript
+public readonly adotInstrumentation: AdotInstrumentationConfig;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.AdotInstrumentationConfig
+- *Default:* No ADOT instrumentation
+
+Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation.
+
+> [https://aws-otel.github.io/docs/getting-started/lambda](https://aws-otel.github.io/docs/getting-started/lambda)
 
 ---
 
