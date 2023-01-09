@@ -35,10 +35,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
       'Programming Language :: Python :: 3.9',
     ],
   },
-  dotnet: {
-    dotNetNamespace: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
-    packageId: 'CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt',
-  },
   jestOptions: {
     extraCliOptions: ['--testMatch "**/*.test.ts"'],
   },
