@@ -1196,8 +1196,8 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^10.0.5:
-  version "10.1.216"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.216.tgz#5e4268d27a4b8d0e510990e916c62f758c85c05a"
+  version "10.1.221"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.221.tgz#92408486486910e48b5a57f2e2d0181e2a2db53a"
 
 contains-path@^0.1.0:
   version "0.1.0"
