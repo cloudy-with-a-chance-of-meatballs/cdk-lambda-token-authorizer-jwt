@@ -2910,8 +2910,8 @@ jsii-diff@^1.71.0:
     yargs "^16.2.0"
 
 jsii-docgen@^7.0.159:
-  version "7.0.200"
-  resolved "https://registry.npmjs.org/jsii-docgen/-/jsii-docgen-7.0.200.tgz"
+  version "7.0.208"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.0.208.tgz#1ae6f812c22d30bf8b337dc111378c1c16efbbf6"
   dependencies:
     "@jsii/spec" "^1.73.0"
     case "^1.6.3"
