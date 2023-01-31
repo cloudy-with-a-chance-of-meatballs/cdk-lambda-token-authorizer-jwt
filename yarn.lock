@@ -529,11 +529,18 @@
     chalk "^4.1.2"
     semver "^7.3.8"
 
-"@jsii/spec@1.73.0", "@jsii/spec@^1.73.0":
-  version "1.73.0"
-  resolved "https://registry.npmjs.org/@jsii/spec/-/spec-1.73.0.tgz"
+"@jsii/check-node@1.74.0":
+  version "1.74.0"
+  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.74.0.tgz#997438e869c5f1fdf7a137c3e29a7236376f3999"
   dependencies:
-    ajv "^8.11.2"
+    chalk "^4.1.2"
+    semver "^7.3.8"
+
+"@jsii/spec@1.74.0", "@jsii/spec@^1.73.0", "@jsii/spec@^1.74.0":
+  version "1.74.0"
+  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.74.0.tgz#3bd974e7113c13ef85057d4de65ee44d4fcb8f37"
+  dependencies:
+    ajv "^8.12.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -848,7 +855,7 @@ ajv@^6.10.0, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^8.11.2:
+ajv@^8.12.0:
   version "8.12.0"
   resolved "https://registry.npmjs.org/ajv/-/ajv-8.12.0.tgz"
   dependencies:
@@ -2910,16 +2917,16 @@ jsii-diff@^1.71.0:
     yargs "^16.2.0"
 
 jsii-docgen@^7.0.159:
-  version "7.0.200"
-  resolved "https://registry.npmjs.org/jsii-docgen/-/jsii-docgen-7.0.200.tgz"
+  version "7.0.219"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.0.219.tgz#8155d5b10da209e0d9281ccdef76d03708f3e502"
   dependencies:
-    "@jsii/spec" "^1.73.0"
+    "@jsii/spec" "^1.74.0"
     case "^1.6.3"
     fs-extra "^10.1.0"
     glob "^7.2.3"
     glob-promise "^3.4.0"
-    jsii-reflect "^1.73.0"
-    jsii-rosetta "^1.73.0"
+    jsii-reflect "^1.74.0"
+    jsii-rosetta "^1.74.0"
     semver "^7.3.8"
     yargs "^16.2.0"
 
@@ -2941,34 +2948,52 @@ jsii-pacmak@^1.71.0:
     xmlbuilder "^15.1.1"
     yargs "^16.2.0"
 
-jsii-reflect@^1.73.0:
-  version "1.73.0"
-  resolved "https://registry.npmjs.org/jsii-reflect/-/jsii-reflect-1.73.0.tgz"
+jsii-reflect@^1.73.0, jsii-reflect@^1.74.0:
+  version "1.74.0"
+  resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.74.0.tgz#ddc1e9780dd120337d901a4a4b72ca5a1492a2c3"
   dependencies:
-    "@jsii/check-node" "1.73.0"
-    "@jsii/spec" "^1.73.0"
+    "@jsii/check-node" "1.74.0"
+    "@jsii/spec" "^1.74.0"
     chalk "^4"
     fs-extra "^10.1.0"
-    oo-ascii-tree "^1.73.0"
+    oo-ascii-tree "^1.74.0"
     yargs "^16.2.0"
 
-jsii-rosetta@^1.73.0:
-  version "1.73.0"
-  resolved "https://registry.npmjs.org/jsii-rosetta/-/jsii-rosetta-1.73.0.tgz"
+jsii-rosetta@^1.73.0, jsii-rosetta@^1.74.0:
+  version "1.74.0"
+  resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-1.74.0.tgz#700c025c798bb668a88911630a2df87a1169cd32"
   dependencies:
-    "@jsii/check-node" "1.73.0"
-    "@jsii/spec" "1.73.0"
+    "@jsii/check-node" "1.74.0"
+    "@jsii/spec" "1.74.0"
     "@xmldom/xmldom" "^0.8.6"
     commonmark "^0.30.0"
     fast-glob "^3.2.12"
-    jsii "1.73.0"
+    jsii "1.74.0"
     semver "^7.3.8"
     semver-intersect "^1.4.0"
     typescript "~3.9.10"
     workerpool "^6.3.1"
     yargs "^16.2.0"
 
-jsii@1.73.0, jsii@^1.71.0:
+jsii@1.74.0:
+  version "1.74.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.74.0.tgz#681c289ae95a91633b61527bdf1bcda29b79e3bd"
+  dependencies:
+    "@jsii/check-node" "1.74.0"
+    "@jsii/spec" "^1.74.0"
+    case "^1.6.3"
+    chalk "^4"
+    fast-deep-equal "^3.1.3"
+    fs-extra "^10.1.0"
+    log4js "^6.7.1"
+    semver "^7.3.8"
+    semver-intersect "^1.4.0"
+    sort-json "^2.0.1"
+    spdx-license-list "^6.6.0"
+    typescript "~3.9.10"
+    yargs "^16.2.0"
+
+jsii@^1.71.0:
   version "1.73.0"
   resolved "https://registry.npmjs.org/jsii/-/jsii-1.73.0.tgz"
   dependencies:
@@ -3346,9 +3371,9 @@ onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-oo-ascii-tree@^1.73.0:
-  version "1.73.0"
-  resolved "https://registry.npmjs.org/oo-ascii-tree/-/oo-ascii-tree-1.73.0.tgz"
+oo-ascii-tree@^1.74.0:
+  version "1.74.0"
+  resolved "https://registry.yarnpkg.com/oo-ascii-tree/-/oo-ascii-tree-1.74.0.tgz#3581e4f95ff9de13660943e504eaddaa58bf08c0"
 
 open@^8.4.0:
   version "8.4.0"
