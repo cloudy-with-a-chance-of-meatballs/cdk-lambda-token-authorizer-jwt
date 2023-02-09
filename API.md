@@ -61,6 +61,7 @@ new TokenAuthorizerJwtFunction(scope: Construct, id: string, props: TokenAuthori
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addAlias">addAlias</a></code> | Defines an alias for this function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addEnvironment">addEnvironment</a></code> | Adds an environment variable to this Lambda function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.addLayers">addLayers</a></code> | Adds one or more Lambda Layers to this Lambda function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.invalidateVersionBasedOn">invalidateVersionBasedOn</a></code> | Mix additional information into the hash of the Version object. |
 
 ---
 
@@ -428,6 +429,35 @@ Adds one or more Lambda Layers to this Lambda function.
 - *Type:* aws-cdk-lib.aws_lambda.ILayerVersion
 
 the layers to be added.
+
+---
+
+##### `invalidateVersionBasedOn` <a name="invalidateVersionBasedOn" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.invalidateVersionBasedOn"></a>
+
+```typescript
+public invalidateVersionBasedOn(x: string): void
+```
+
+Mix additional information into the hash of the Version object.
+
+The Lambda Function construct does its best to automatically create a new
+Version when anything about the Function changes (its code, its layers,
+any of the other properties).
+
+However, you can sometimes source information from places that the CDK cannot
+look into, like the deploy-time values of SSM parameters. In those cases,
+the CDK would not force the creation of a new Version object when it actually
+should.
+
+This method can be used to invalidate the current Version object. Pass in
+any string into this method, and make sure the string changes when you know
+a new Version needs to be created.
+
+This method may be called more than once.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.invalidateVersionBasedOn.parameter.x"></a>
+
+- *Type:* string
 
 ---
 
@@ -1082,6 +1112,7 @@ const tokenAuthorizerFunctionOptions: TokenAuthorizerFunctionOptions = { ... }
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.runtimeManagementMode">runtimeManagementMode</a></code> | <code>aws-cdk-lib.aws_lambda.RuntimeManagementMode</code> | Sets the runtime management configuration for a function's version. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
@@ -1554,6 +1585,19 @@ provide a Role, you must add the relevant AWS managed policies yourself.
 
 The relevant managed policies are "service-role/AWSLambdaBasicExecutionRole" and
 "service-role/AWSLambdaVPCAccessExecutionRole".
+
+---
+
+##### `runtimeManagementMode`<sup>Optional</sup> <a name="runtimeManagementMode" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.runtimeManagementMode"></a>
+
+```typescript
+public readonly runtimeManagementMode: RuntimeManagementMode;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.RuntimeManagementMode
+- *Default:* Auto
+
+Sets the runtime management configuration for a function's version.
 
 ---
 
