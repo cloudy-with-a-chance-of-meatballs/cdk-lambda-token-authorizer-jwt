@@ -42,7 +42,7 @@
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "esbuild": "^0.17.6",
+    "esbuild": "^0.17.7",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.7",
     "eslint-import-resolver-typescript": "^3.5.3",
@@ -51,9 +51,9 @@
     "jest-junit": "^13",
     "jsii": "^1.74.0",
     "jsii-diff": "^1.74.0",
-    "jsii-docgen": "^7.0.228",
+    "jsii-docgen": "^7.0.229",
     "jsii-pacmak": "^1.74.0",
-    "projen": "^0.67.43",
+    "projen": "^0.67.46",
     "standard-version": "^9",
     "ts-jest": "^27",
     "typescript": "^4.9.5"
@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "aws-cdk-lib": "^2.64.0",
-    "constructs": "^10.1.245"
+    "constructs": "^10.1.246"
   },
   "keywords": [
     "api",

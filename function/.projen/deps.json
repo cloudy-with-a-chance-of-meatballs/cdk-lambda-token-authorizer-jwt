@@ -76,11 +76,16 @@
     },
     {
       "name": "@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt",
-      "version": "^0.1.1",
+      "version": "^0.1.2",
       "type": "runtime"
     },
     {
       "name": "@types/aws-lambda",
+      "type": "runtime"
+    },
+    {
+      "name": "json5",
+      "version": "^2.2.2",
       "type": "runtime"
     }
   ],
