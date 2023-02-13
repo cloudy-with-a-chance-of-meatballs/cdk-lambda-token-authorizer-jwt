@@ -65,7 +65,8 @@ const fn = new typescript.TypeScriptProject({
   defaultReleaseBranch: 'main',
   deps: [
     '@types/aws-lambda',
-    '@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt@^0.1.1',
+    '@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt@^0.1.2',
+    'json5@^2.2.2',
   ],
   eslint: true,
   prettier: true,
