@@ -1540,9 +1540,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^10.1.246:
-  version "10.1.252"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.252.tgz#a241329ffc50451b6de4fb9147ef32b0e181a515"
-  integrity sha512-8j3bcoSTlIjbCu1tflWHvipVDWmllUNu3dEWb5GXvsXCiYuH0NtXCCN5q6GmFInDcspZp8WOYu66uqQ8Bk7jzQ==
+  version "10.1.304"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.304.tgz#b9ba53e14a2f68a482ddfd7c921bc285527e6aa4"
+  integrity sha512-mYzFQ+nOCW5oOYM4OFEa66bJBfWUo+jTYUlTQm8UxSrT5RgN5dKyPOgxd3dY76MdV1BRaKXX+TiIo21LW9ORnw==
 
 conventional-changelog-angular@^5.0.12:
   version "5.0.13"
