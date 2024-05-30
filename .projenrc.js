@@ -29,7 +29,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   npmAccess: javascript.NpmAccess.PUBLIC,
   dependabot: true,
   codeCov: true,
-  minNodeVersion: '16.18.1',
+  minNodeVersion: '18.20.3',
   python: {
     distName:
       'cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt',
@@ -49,7 +49,7 @@ new awscdk.LambdaFunction(project, {
   entrypoint: 'function/src/authorizer.lambda.ts',
   constructName: 'AuthorizerFunction',
   cdkDeps: project.cdkDeps,
-  runtime: awscdk.LambdaRuntime.NODEJS_16_X,
+  runtime: awscdk.LambdaRuntime.NODEJS_18_X,
 });
 
 project.synth();
