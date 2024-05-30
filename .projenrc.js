@@ -6,34 +6,35 @@ const project = new awscdk.AwsCdkConstructLibrary({
   cdkVersion: '2.5.0',
   defaultReleaseBranch: 'main',
   name: '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt',
-  repositoryUrl: 'https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.git',
-  description: 'Add a lambda function to your aws-rest-api-gateway which can be used as a token authorizer',
+  repositoryUrl:
+    'https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.git',
+  description:
+    'Add a lambda function to your aws-rest-api-gateway which can be used as a token authorizer',
   stability: 'experimental',
   license: 'MIT',
-  keywords: ['aws', 'cdk', 'lambda', 'apigateway', 'rest', 'api', 'jwt', 'tokenauthorizer', 'jwks', 'authorizer', 'token'],
-  deps: [
-    'aws-cdk-lib',
-    'constructs',
+  keywords: [
+    'aws',
+    'cdk',
+    'lambda',
+    'apigateway',
+    'rest',
+    'api',
+    'jwt',
+    'tokenauthorizer',
+    'jwks',
+    'authorizer',
+    'token',
   ],
+  deps: ['aws-cdk-lib', 'constructs'],
   npmAccess: javascript.NpmAccess.PUBLIC,
-  autoMerge: true,
-  autoApproveUpgrades: true,
-  autoApproveOptions: {
-    allowedUsernames: ['dependabot[bot]'],
-    secret: 'PROJEN_GITHUB_TOKEN',
-  },
   dependabot: true,
-  dependabotOptions: {
-    labels: ['auto-approve'],
-  },
   codeCov: true,
   minNodeVersion: '16.18.1',
   python: {
-    distName: 'cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt',
+    distName:
+      'cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt',
     module: 'cloudy_with_a_chance_of_meatballs_cdk_lambda_token_authorizer_jwt',
-    classifiers: [
-      'Programming Language :: Python :: 3.9',
-    ],
+    classifiers: ['Programming Language :: Python :: 3.9'],
   },
   jestOptions: {
     extraCliOptions: ['--testMatch "**/*.test.ts"'],
@@ -65,7 +66,7 @@ const fn = new typescript.TypeScriptProject({
   defaultReleaseBranch: 'main',
   deps: [
     '@types/aws-lambda',
-    '@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt@^0.1.2',
+    '@cloudy-with-a-chance-of-meatballs/aws-apigateway-rest-token-authorizer-jwt@^0.1.5',
     'json5@^2.2.2',
   ],
   eslint: true,

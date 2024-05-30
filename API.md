@@ -1,3 +1,175 @@
+# CDK Lambda TokenAuthorizer JWT
+
+Add a lambda function to your project which can be used as a apigateway token authorizer
+
+[![View on Construct Hub](https://constructs.dev/badge?package=%40cloudy-with-a-chance-of-meatballs%2Fcdk-lambda-token-authorizer-jwt)](https://constructs.dev/packages/@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt)
+
+[![GitHub](https://img.shields.io/github/license/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt?style=flat-square)](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/blob/main/LICENSE)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt?sort=semver&style=flat-square)](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/releases)
+[![npm (scoped)](https://img.shields.io/npm/v/@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt?style=flat-square)](https://www.npmjs.com/package/@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt)
+[![PyPI](https://img.shields.io/pypi/v/cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt?style=flat-square)](https://pypi.org/project/cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt/)
+[![Nuget](https://img.shields.io/nuget/v/CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt?style=flat-square)](https://www.nuget.org/packages/CloudyWithAchanceOfMeatballs.CdkLambdaTokenAuthorizerJwt/)
+[![release](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/actions/workflows/release.yml/badge.svg)](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/actions/workflows/release.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/10f0734997f4d96da662/maintainability)](https://codeclimate.com/github/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/maintainability)
+[![codecov](https://codecov.io/gh/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/branch/main/graph/badge.svg?token=86HXCCHOGJ)](https://codecov.io/gh/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod&style=flat-square)](https://gitpod.io/#https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt)
+
+## Install
+
+### TypeScript
+
+```shell
+npm install @cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt
+```
+
+### Python
+
+```shell
+pip install cloudy-with-a-chance-of-meatballs.cdk-lambda-token-authorizer-jwt
+```
+
+## Usage
+
+### Notes
+- **JWT Token handling**: The token verfification is done via [https://github.com/auth0/node-jsonwebtoken](https://github.com/auth0/node-jsonwebtoken), the jwks fetcher is using [https://github.com/auth0/node-jwks-rsa](https://github.com/auth0/node-jwks-rsa). The implementation per default verifies the token and if given the expiration.
+
+- **JWT Payload:** Any verification of the token payload must be done over injecting a json schema for validation using [https://ajv.js.org/json-type-definition.html](https://ajv.js.org/json-type-definition.html).
+
+- **Protocols:** [main/API.md#iauthorizeroptions](https://github.com/cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt/blob/main/API.md#iauthorizeroptions-)
+
+### Example usage with Rest Apigateway
+
+```typescript
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import * as apigateway from 'aws-cdk-lib/aws-apigateway';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
+
+export class HelloworldStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    const api               = new apigateway.RestApi(this, 'ApiName', {});
+    const tokenAuthFunction = new TokenAuthorizerJwtFunction(this, 'fnName', {
+      tokenAuthorizerOptions: {
+        verificationStrategy: {
+          strategyName: 'argument',
+          secret: 'mySecret-symmetric-or-asymmetric',
+        },
+      },
+    });
+
+    const tokenAuthorizer   = new apigateway.TokenAuthorizer(this, 'fnNameApiGwAuthorizer', {
+      handler: tokenAuthFunction // use the TokenAuthorizerJwtFunction
+    });
+
+    const dummyFn = new lambda.Function(this, 'helloWorldFunction', {
+      handler: 'index.handler',
+      code: lambda.Code.fromInline(`exports.handler = async (event) => { console.log('event: ', event); return '{"statusCode": 200, "message": "DummyLambdaFunction"}' };`),
+      runtime: lambda.Runtime.NODEJS_16_X,
+    });
+
+    const dummyLambdaIntegration = new apigateway.LambdaIntegration(
+      dummyFn, { passthroughBehavior: apigateway.PassthroughBehavior.WHEN_NO_MATCH }
+    );
+
+    const someMethod = api.root.addMethod("GET", dummyLambdaIntegration, {
+      authorizer: tokenAuthorizer
+    });
+  }
+}
+```
+
+### Validation
+
+```typescript
+import * as cdk from 'aws-cdk-lib';
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
+
+const app   = new cdk.App();
+const stack = new cdk.Stack(app, 'MyStack');
+
+const myValidation = { properties:{ iss: { enum: ['my_trusted_iss'] } }};
+
+new TokenAuthorizerJwtFunction(stack, 'example-stack', {
+  tokenAuthorizerOptions: {
+    payloadValidationStrategy: {
+      strategyName: 'schema',
+      schema: JSON.stringify(myValidation)
+    },
+    verificationStrategy: { strategyName: 'argument',  secret: 'someSecret' }
+  }
+});
+```
+
+### Using JWKS
+
+```typescript
+import * as cdk from 'aws-cdk-lib';
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
+
+const app   = new cdk.App();
+const stack = new cdk.Stack(app, 'MyStack');
+
+new TokenAuthorizerJwtFunction(stack, 'example-stack', {
+  tokenAuthorizerOptions: {
+    verificationStrategy: {
+      strategyName: 'jwksFromUriByKid',
+      uri: 'uri',
+      kid: 'kid',
+    }
+  }
+});
+```
+
+### Using asymmetric algorithms, e.g. public key
+
+```typescript
+import * as cdk from 'aws-cdk-lib';
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
+
+const app   = new cdk.App();
+const stack = new cdk.Stack(app, 'MyStack');
+
+const myPublicKeyOneliner = '-----BEGIN PUBLIC KEY---\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKuTfz7kpJHPrmcmgx4Xf4GMoM2kK4mh\nMpSOW3qu1zZA1wfMHV8PS0Kds0nXMB6mmHk/Ke1\Et68aEspQRIn1aLcCAwEAAQ==\n-----END PUBLIC KEY-----';
+
+new TokenAuthorizerJwtFunction(stack, 'example-stack', {
+  tokenAuthorizerOptions: {
+    verificationStrategy: {
+      strategyName: 'argument',
+      secret: myPublicKeyOneliner
+    }
+  }
+});
+```
+
+### Using symmetric algorithms, same key for sign and verify :warning:
+
+<small>**Attention:** the key might be exposed during deploy, in the runtime etc.</small>
+
+```typescript
+import * as cdk from 'aws-cdk-lib';
+import { TokenAuthorizerJwtFunction } from '@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt';
+
+const app   = new cdk.App();
+const stack = new cdk.Stack(app, 'MyStack');
+
+const mySymmetricSecret = 'sharedSecret';
+
+new TokenAuthorizerJwtFunction(stack, 'example-stack', {
+  tokenAuthorizerOptions: {
+    verificationStrategy: {
+      strategyName: 'argument',
+      secret: mySymmetricSecret
+    }
+  }
+});
+```
+
+🍻
+
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
@@ -52,6 +224,7 @@ new TokenAuthorizerJwtFunction(scope: Construct, id: string, props: TokenAuthori
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.configureAsyncInvoke">configureAsyncInvoke</a></code> | Configures options for asynchronous invocation. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.considerWarningOnInvokeFunctionPermissions">considerWarningOnInvokeFunctionPermissions</a></code> | A warning will be added to functions under the following conditions: - permissions that include `lambda:InvokeFunction` are added to the unqualified function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvoke">grantInvoke</a></code> | Grant the given identity permissions to invoke this Lambda. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvokeCompositePrincipal">grantInvokeCompositePrincipal</a></code> | Grant multiple principals the ability to invoke this Lambda via CompositePrincipal. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvokeUrl">grantInvokeUrl</a></code> | Grant the given identity permissions to invoke this Lambda Function URL. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metric">metric</a></code> | Return the given named metric for this Function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.metricDuration">metricDuration</a></code> | How long execution of this Lambda takes. |
@@ -103,11 +276,11 @@ public addEventSource(source: IEventSource): void
 
 Adds an event source to this function.
 
-Event sources are implemented in the @aws-cdk/aws-lambda-event-sources module.
+Event sources are implemented in the aws-cdk-lib/aws-lambda-event-sources module.
 
 The following example adds an SQS Queue as an event source:
 ```
-import { SqsEventSource } from '@aws-cdk/aws-lambda-event-sources';
+import { SqsEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 myFunction.addEventSource(new SqsEventSource(myQueue));
 ```
 
@@ -244,6 +417,20 @@ Grant the given identity permissions to invoke this Lambda.
 
 ---
 
+##### `grantInvokeCompositePrincipal` <a name="grantInvokeCompositePrincipal" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvokeCompositePrincipal"></a>
+
+```typescript
+public grantInvokeCompositePrincipal(compositePrincipal: CompositePrincipal): Grant[]
+```
+
+Grant multiple principals the ability to invoke this Lambda via CompositePrincipal.
+
+###### `compositePrincipal`<sup>Required</sup> <a name="compositePrincipal" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvokeCompositePrincipal.parameter.compositePrincipal"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.CompositePrincipal
+
+---
+
 ##### `grantInvokeUrl` <a name="grantInvokeUrl" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.grantInvokeUrl"></a>
 
 ```typescript
@@ -361,8 +548,8 @@ fn.addAlias('Live');
 // Is equivalent to
 
 new lambda.Alias(this, 'AliasLive', {
-   aliasName: 'Live',
-   version: fn.currentVersion,
+  aliasName: 'Live',
+  version: fn.currentVersion,
 });
 ```
 
@@ -584,6 +771,9 @@ TokenAuthorizerJwtFunction.fromFunctionArn(scope: Construct, id: string, functio
 
 Import a lambda function into the CDK using its ARN.
 
+For `Function.addPermissions()` to work on this imported lambda, make sure that is
+in the same account and region as the stack you are importing it into.
+
 ###### `scope`<sup>Required</sup> <a name="scope" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.fromFunctionArn.parameter.scope"></a>
 
 - *Type:* constructs.Construct
@@ -611,6 +801,9 @@ TokenAuthorizerJwtFunction.fromFunctionAttributes(scope: Construct, id: string, 
 ```
 
 Creates a Lambda function object which represents a function not defined within this stack.
+
+For `Function.addPermissions()` to work on this imported lambda, set the sameEnvironment property to true
+if this imported lambda is in the same account and region as the stack you are importing it into.
 
 ###### `scope`<sup>Required</sup> <a name="scope" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerJwtFunction.fromFunctionAttributes.parameter.scope"></a>
 
@@ -1088,6 +1281,7 @@ const tokenAuthorizerFunctionOptions: TokenAuthorizerFunctionOptions = { ... }
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.adotInstrumentation">adotInstrumentation</a></code> | <code>aws-cdk-lib.aws_lambda.AdotInstrumentationConfig</code> | Specify the configuration of AWS Distro for OpenTelemetry (ADOT) instrumentation. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.allowAllOutbound">allowAllOutbound</a></code> | <code>boolean</code> | Whether to allow the Lambda to send all network traffic. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.allowPublicSubnet">allowPublicSubnet</a></code> | <code>boolean</code> | Lambda Functions in a public subnet can NOT access the internet. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.applicationLogLevel">applicationLogLevel</a></code> | <code>string</code> | Sets the application log level for the function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.architecture">architecture</a></code> | <code>aws-cdk-lib.aws_lambda.Architecture</code> | The system architectures compatible with this lambda function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.codeSigningConfig">codeSigningConfig</a></code> | <code>aws-cdk-lib.aws_lambda.ICodeSigningConfig</code> | Code signing config associated with this function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.currentVersionOptions">currentVersionOptions</a></code> | <code>aws-cdk-lib.aws_lambda.VersionOptions</code> | Options for the `lambda.Version` resource automatically created by the `fn.currentVersion` method. |
@@ -1103,17 +1297,24 @@ const tokenAuthorizerFunctionOptions: TokenAuthorizerFunctionOptions = { ... }
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.functionName">functionName</a></code> | <code>string</code> | A name for the function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.initialPolicy">initialPolicy</a></code> | <code>aws-cdk-lib.aws_iam.PolicyStatement[]</code> | Initial policy statements to add to the created Lambda Role. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.insightsVersion">insightsVersion</a></code> | <code>aws-cdk-lib.aws_lambda.LambdaInsightsVersion</code> | Specify the version of CloudWatch Lambda insights to use for monitoring. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.ipv6AllowedForDualStack">ipv6AllowedForDualStack</a></code> | <code>boolean</code> | Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.layers">layers</a></code> | <code>aws-cdk-lib.aws_lambda.ILayerVersion[]</code> | A list of layers to add to the function's execution environment. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logFormat">logFormat</a></code> | <code>string</code> | Sets the logFormat for the function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.loggingFormat">loggingFormat</a></code> | <code>aws-cdk-lib.aws_lambda.LoggingFormat</code> | Sets the loggingFormat for the function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logGroup">logGroup</a></code> | <code>aws-cdk-lib.aws_logs.ILogGroup</code> | The log group the function sends logs to. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetention">logRetention</a></code> | <code>aws-cdk-lib.aws_logs.RetentionDays</code> | The number of days log events are kept in CloudWatch Logs. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetentionRetryOptions">logRetentionRetryOptions</a></code> | <code>aws-cdk-lib.aws_lambda.LogRetentionRetryOptions</code> | When log retention is specified, a custom resource attempts to create the CloudWatch log group. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetentionRole">logRetentionRole</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The IAM role for the Lambda function associated with the custom resource that sets the retention policy. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.memorySize">memorySize</a></code> | <code>number</code> | The amount of memory, in MB, that is allocated to your Lambda function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.paramsAndSecrets">paramsAndSecrets</a></code> | <code>aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion</code> | Specify the configuration of Parameters and Secrets Extension. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.profiling">profiling</a></code> | <code>boolean</code> | Enable profiling. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.profilingGroup">profilingGroup</a></code> | <code>aws-cdk-lib.aws_codeguruprofiler.IProfilingGroup</code> | Profiling Group. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.reservedConcurrentExecutions">reservedConcurrentExecutions</a></code> | <code>number</code> | The maximum of concurrent executions you want to reserve for the function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Lambda execution role. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.runtimeManagementMode">runtimeManagementMode</a></code> | <code>aws-cdk-lib.aws_lambda.RuntimeManagementMode</code> | Sets the runtime management configuration for a function's version. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.securityGroups">securityGroups</a></code> | <code>aws-cdk-lib.aws_ec2.ISecurityGroup[]</code> | The list of security groups to associate with the Lambda's network interfaces. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.snapStart">snapStart</a></code> | <code>aws-cdk-lib.aws_lambda.SnapStartConf</code> | Enable SnapStart for Lambda Function. |
+| <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.systemLogLevel">systemLogLevel</a></code> | <code>string</code> | Sets the system log level for the function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.timeout">timeout</a></code> | <code>aws-cdk-lib.Duration</code> | The function execution time (in seconds) after which Lambda terminates the function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.tracing">tracing</a></code> | <code>aws-cdk-lib.aws_lambda.Tracing</code> | Enable AWS X-Ray Tracing for Lambda Function. |
 | <code><a href="#@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.IVpc</code> | VPC network to place Lambda network interfaces. |
@@ -1209,6 +1410,9 @@ Whether to allow the Lambda to send all network traffic.
 If set to false, you must individually add traffic rules to allow the
 Lambda to connect to network targets.
 
+Do not specify this property if the `securityGroups` or `securityGroup` property is set.
+Instead, configure `allowAllOutbound` directly on the security group.
+
 ---
 
 ##### `allowPublicSubnet`<sup>Optional</sup> <a name="allowPublicSubnet" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.allowPublicSubnet"></a>
@@ -1225,6 +1429,19 @@ Lambda Functions in a public subnet can NOT access the internet.
 Use this property to acknowledge this limitation and still place the function in a public subnet.
 
 > [https://stackoverflow.com/questions/52992085/why-cant-an-aws-lambda-function-inside-a-public-subnet-in-a-vpc-connect-to-the/52994841#52994841](https://stackoverflow.com/questions/52992085/why-cant-an-aws-lambda-function-inside-a-public-subnet-in-a-vpc-connect-to-the/52994841#52994841)
+
+---
+
+##### `applicationLogLevel`<sup>Optional</sup> <a name="applicationLogLevel" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.applicationLogLevel"></a>
+
+```typescript
+public readonly applicationLogLevel: string;
+```
+
+- *Type:* string
+- *Default:* "INFO"
+
+Sets the application log level for the function.
 
 ---
 
@@ -1441,6 +1658,21 @@ Specify the version of CloudWatch Lambda insights to use for monitoring.
 
 ---
 
+##### `ipv6AllowedForDualStack`<sup>Optional</sup> <a name="ipv6AllowedForDualStack" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.ipv6AllowedForDualStack"></a>
+
+```typescript
+public readonly ipv6AllowedForDualStack: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
+
+Only used if 'vpc' is supplied.
+
+---
+
 ##### `layers`<sup>Optional</sup> <a name="layers" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.layers"></a>
 
 ```typescript
@@ -1455,6 +1687,53 @@ A list of layers to add to the function's execution environment.
 You can configure your Lambda function to pull in
 additional code during initialization in the form of layers. Layers are packages of libraries or other dependencies
 that can be used by multiple functions.
+
+---
+
+##### `logFormat`<sup>Optional</sup> <a name="logFormat" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logFormat"></a>
+
+```typescript
+public readonly logFormat: string;
+```
+
+- *Type:* string
+- *Default:* "Text"
+
+Sets the logFormat for the function.
+
+---
+
+##### `loggingFormat`<sup>Optional</sup> <a name="loggingFormat" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.loggingFormat"></a>
+
+```typescript
+public readonly loggingFormat: LoggingFormat;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.LoggingFormat
+- *Default:* LoggingFormat.TEXT
+
+Sets the loggingFormat for the function.
+
+---
+
+##### `logGroup`<sup>Optional</sup> <a name="logGroup" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logGroup"></a>
+
+```typescript
+public readonly logGroup: ILogGroup;
+```
+
+- *Type:* aws-cdk-lib.aws_logs.ILogGroup
+- *Default:* `/aws/lambda/${this.functionName}` - default log group created by Lambda
+
+The log group the function sends logs to.
+
+By default, Lambda functions send logs to an automatically created default log group named /aws/lambda/\<function name\>.
+However you cannot change the properties of this auto-created log group using the AWS CDK, e.g. you cannot set a different log retention.
+
+Use the `logGroup` property to create a fully customizable LogGroup ahead of time, and instruct the Lambda function to send logs to it.
+
+Providing a user-controlled log group was rolled out to commercial regions on 2023-11-16.
+If you are deploying to another type of region, please check regional availability first.
 
 ---
 
@@ -1473,6 +1752,20 @@ When updating
 this property, unsetting it doesn't remove the log retention policy. To
 remove the retention policy, set the value to `INFINITE`.
 
+This is a legacy API and we strongly recommend you move away from it if you can.
+Instead create a fully customizable log group with `logs.LogGroup` and use the `logGroup` property
+to instruct the Lambda function to send logs to it.
+Migrating from `logRetention` to `logGroup` will cause the name of the log group to change.
+Users and code and referencing the name verbatim will have to adjust.
+
+In AWS CDK code, you can access the log group name directly from the LogGroup construct:
+```ts
+import * as logs from 'aws-cdk-lib/aws-logs';
+
+declare const myLogGroup: logs.LogGroup;
+myLogGroup.logGroupName;
+```
+
 ---
 
 ##### `logRetentionRetryOptions`<sup>Optional</sup> <a name="logRetentionRetryOptions" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetentionRetryOptions"></a>
@@ -1488,6 +1781,9 @@ When log retention is specified, a custom resource attempts to create the CloudW
 
 These options control the retry policy when interacting with CloudWatch APIs.
 
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
+
 ---
 
 ##### `logRetentionRole`<sup>Optional</sup> <a name="logRetentionRole" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.logRetentionRole"></a>
@@ -1500,6 +1796,9 @@ public readonly logRetentionRole: IRole;
 - *Default:* A new role is created.
 
 The IAM role for the Lambda function associated with the custom resource that sets the retention policy.
+
+This is a legacy API and we strongly recommend you migrate to `logGroup` if you can.
+`logGroup` allows you to create a fully customizable log group and instruct the Lambda function to send logs to it.
 
 ---
 
@@ -1517,6 +1816,21 @@ The amount of memory, in MB, that is allocated to your Lambda function.
 Lambda uses this value to proportionally allocate the amount of CPU
 power. For more information, see Resource Model in the AWS Lambda
 Developer Guide.
+
+---
+
+##### `paramsAndSecrets`<sup>Optional</sup> <a name="paramsAndSecrets" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.paramsAndSecrets"></a>
+
+```typescript
+public readonly paramsAndSecrets: ParamsAndSecretsLayerVersion;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.ParamsAndSecretsLayerVersion
+- *Default:* No Parameters and Secrets Extension
+
+Specify the configuration of Parameters and Secrets Extension.
+
+> [https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html](https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html)
 
 ---
 
@@ -1613,6 +1927,34 @@ public readonly securityGroups: ISecurityGroup[];
 The list of security groups to associate with the Lambda's network interfaces.
 
 Only used if 'vpc' is supplied.
+
+---
+
+##### `snapStart`<sup>Optional</sup> <a name="snapStart" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.snapStart"></a>
+
+```typescript
+public readonly snapStart: SnapStartConf;
+```
+
+- *Type:* aws-cdk-lib.aws_lambda.SnapStartConf
+- *Default:* No snapstart
+
+Enable SnapStart for Lambda Function.
+
+SnapStart is currently supported only for Java 11, 17 runtime
+
+---
+
+##### `systemLogLevel`<sup>Optional</sup> <a name="systemLogLevel" id="@cloudy-with-a-chance-of-meatballs/cdk-lambda-token-authorizer-jwt.TokenAuthorizerFunctionOptions.property.systemLogLevel"></a>
+
+```typescript
+public readonly systemLogLevel: string;
+```
+
+- *Type:* string
+- *Default:* "INFO"
+
+Sets the system log level for the function.
 
 ---
 
