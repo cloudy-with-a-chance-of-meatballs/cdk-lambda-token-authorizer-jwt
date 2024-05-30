@@ -55,7 +55,7 @@
       "description": "Create a JavaScript bundle from function/src/authorizer.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle function/src/authorizer.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/function/src/authorizer.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle function/src/authorizer.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/function/src/authorizer.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
         }
       ]
     },
@@ -64,7 +64,7 @@
       "description": "Continuously update the JavaScript bundle from function/src/authorizer.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle function/src/authorizer.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/function/src/authorizer.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle function/src/authorizer.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/function/src/authorizer.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
         }
       ]
     },
